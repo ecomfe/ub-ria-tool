@@ -1,0 +1,22 @@
+{
+    "name": "ub-ria-tool",
+    "description": "CMD tools for union biz ria systems",
+    "version": "0.8.0-beta.1",
+    "license": "GPL-3.0",
+    "author": [
+        {
+            "name": "otakustay",
+            "email": "otakustay@gmail.com"
+        }
+    ],
+    "dependencies": {
+        "underscore": "1.x",
+        "underscore.string": "2.x",
+        "async": "0.x",
+        "optimist": "0.x",
+        "fs-extra": "0.x",
+        "edp-project": "0.x",
+        "edp-package": "0.x",
+        "etpl": ">=2.0.8"
+    }
+}
