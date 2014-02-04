@@ -28,7 +28,6 @@ define(
          * 当前Action的分组名称
          *
          * @type {string}
-         * @readonly
          * @override
          */
         // TODO: 必须设置这个值，根据系统的导航条进行设置
@@ -45,7 +44,7 @@ define(
         /**
          * 数据模型类型
          *
-         * @type {function}
+         * @type {Function}
          * @override
          */
         ${actionType}.prototype.modelType = require('./ListModel');
@@ -53,7 +52,7 @@ define(
         /**
          * 视图类型
          *
-         * @type {function}
+         * @type {Function}
          * @override
          */
         ${actionType}.prototype.viewType = require('./ListView');

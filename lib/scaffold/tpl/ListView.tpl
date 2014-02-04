@@ -29,6 +29,7 @@ define(
          * 使用的模板名称
          *
          * @type {string}
+         * @override
          */
         ${viewType}.prototype.template = '${entity}List';
 

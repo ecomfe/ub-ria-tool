@@ -2,7 +2,7 @@
 <!-- import: ${entity}ListMain -->
 
 <!-- target: ${entity}ListMain -->
-<section class="view list-view">
+<div class="view list-view">
     <section class="list-filter-options">
         <form class="list-filter" data-ui-type="Form" data-ui-id="filter" action="/slot/search"
             method="GET" novalidate="novalidate">
@@ -24,4 +24,4 @@
     </footer>
     <!-- import: listTable -->
     <!-- import: listPager -->
-</section>
+</div>
