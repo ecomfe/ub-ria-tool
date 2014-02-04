@@ -1,8 +1,8 @@
-<!-- target: ${entity}Form -->
+<!-- target: ${templateName} -->
 <!-- import: formCrumb -->
-<!-- import: ${entity}FormMain -->
+<!-- import: ${templateName}Main -->
 
-<!-- target: ${entity}FormMain -->
+<!-- target: ${templateName}Main -->
 <div class="view form-view">
     <h2>新建${description}</h2>
     <form data-ui-type="Form" data-ui-id="form"

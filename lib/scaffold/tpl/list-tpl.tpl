@@ -1,7 +1,7 @@
-<!-- target: ${entity}List -->
-<!-- import: ${entity}ListMain -->
+<!-- target: ${templateName} -->
+<!-- import: ${templateName}Main -->
 
-<!-- target: ${entity}ListMain -->
+<!-- target: ${templateName}Main -->
 <div class="view list-view">
     <section class="list-filter-options">
         <form class="list-filter" data-ui-type="Form" data-ui-id="filter" action="/slot/search"
