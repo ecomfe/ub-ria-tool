@@ -42,20 +42,20 @@ define(
         ${actionType}.prototype.entityDescription = config.description;
 
         /**
-         * 视图类型
-         *
-         * @type {Function}
-         * @override
-         */
-        ${actionType}.prototype.viewType = require('./${viewType}');
-
-        /**
          * 数据模型类型
          *
          * @type {function}
          * @override
          */
-        ${actionType}.prototype.modelType = require('./${modelType}');
+        ${actionType}.prototype.modelType = require('./${modelModule}');
+
+        /**
+         * 视图类型
+         *
+         * @type {Function}
+         * @override
+         */
+        ${actionType}.prototype.viewType = require('./${viewModule}');
 
         return ${actionType};
     }

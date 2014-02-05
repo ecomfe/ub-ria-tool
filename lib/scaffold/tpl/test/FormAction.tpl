@@ -1,6 +1,6 @@
 define(function (require) {
     var FormAction = require('common/FormAction');
-    var ${actionType} = require('${entity}/Form');
+    var ${actionType} = require('${entity}/${actionModule}');
 
     describe('${actionType}Action', function () {
         it('should be a constructor', function () {

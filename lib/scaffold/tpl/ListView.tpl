@@ -11,7 +11,7 @@ define(
         var util = require('er/util');
         var ListView = require('common/ListView');
 
-        require('tpl!./tpl/list.tpl.html');
+        require('tpl!./tpl/${templateFile}.tpl.html');
 
         /**
          * ${description}列表视图类
@@ -31,7 +31,7 @@ define(
          * @type {string}
          * @override
          */
-        ${viewType}.prototype.template = '${entity}List';
+        ${viewType}.prototype.template = '${templateName}';
 
         var Status = require('./enum').Status;
 

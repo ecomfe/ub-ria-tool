@@ -1,6 +1,6 @@
 define(function (require) {
     var ListAction = require('common/ListAction');
-    var ${actionType} = require('${entity}/List');
+    var ${actionType} = require('${entity}/${actionModule}');
 
     describe('${actionType}Action', function () {
         it('should be a constructor', function () {

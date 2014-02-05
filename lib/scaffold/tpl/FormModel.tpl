@@ -19,7 +19,7 @@ define(
          * @constructor
          */
         function ${modelType}() {
-            FormModel.call(this, '${entityName}');
+            FormModel.apply(this, arguments);
             this.addData(new Data());
         }
 

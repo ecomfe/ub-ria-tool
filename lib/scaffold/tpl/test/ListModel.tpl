@@ -1,6 +1,6 @@
 define(function (require) {
     var ListModel = require('common/ListModel');
-    var ${modelType} = require('${entity}/ListModel');
+    var ${modelType} = require('${entity}/${modelModule}');
 
     describe('${modelType}', function () {
         it('should be a constructor', function () {

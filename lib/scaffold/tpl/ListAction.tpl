@@ -47,7 +47,7 @@ define(
          * @type {Function}
          * @override
          */
-        ${actionType}.prototype.modelType = require('./ListModel');
+        ${actionType}.prototype.modelType = require('./${modelModule}');
 
         /**
          * 视图类型
@@ -55,7 +55,7 @@ define(
          * @type {Function}
          * @override
          */
-        ${actionType}.prototype.viewType = require('./ListView');
+        ${actionType}.prototype.viewType = require('./${viewModule}');
 
         /**
          * 默认查询参数

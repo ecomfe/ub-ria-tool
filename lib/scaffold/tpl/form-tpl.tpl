@@ -1,6 +1,8 @@
 <!-- target: ${templateName} -->
-<!-- import: formCrumb -->
-<!-- import: ${templateName}Main -->
+<div class="fullsize-page">
+    <!-- import: formCrumb -->
+    <!-- import: ${templateName}Main -->
+</div>
 
 <!-- target: ${templateName}Main -->
 <div class="view form-view">

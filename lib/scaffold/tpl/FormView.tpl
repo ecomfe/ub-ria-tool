@@ -11,7 +11,7 @@ define(
         var util = require('er/util');
         var FormView = require('common/FormView');
 
-        require('tpl!./tpl/form.tpl.html');
+        require('tpl!./tpl/${templateFile}.tpl.html');
 
         /**
          * ${description}表单视图类
@@ -31,7 +31,7 @@ define(
          * @type {string}
          * @override
          */
-        ${viewType}.prototype.template = '${entity}List';
+        ${viewType}.prototype.template = '${templateName}';
 
         /**
          * 从表单中获取实体数据

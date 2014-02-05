@@ -1,6 +1,6 @@
 define(function (require) {
     var FormModel = require('common/FormModel');
-    var ${modelType} = require('${entity}/FormModel');
+    var ${modelType} = require('${entity}/${modelModule}');
 
     describe('${modelType}', function () {
         it('should be a constructor', function () {

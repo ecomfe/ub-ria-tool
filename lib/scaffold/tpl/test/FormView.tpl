@@ -1,6 +1,6 @@
 define(function (require) {
     var FormView = require('common/FormView');
-    var ${viewType} = require('${entity}/FormView');
+    var ${viewType} = require('${entity}/${viewModule}');
 
     describe('${viewType}', function () {
         it('should be a constructor', function () {

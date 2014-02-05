@@ -1,7 +1,7 @@
 define(function (require) {
     var ListView = require('common/ListView');
     var Model = require('er/Model');
-    var ${viewType} = require('${entity}/ListView');
+    var ${viewType} = require('${entity}/${listModule}');
 
     describe('${viewType}', function () {
         it('should be a constructor', function () {
