@@ -1,6 +1,7 @@
 {
     "name": "ub-ria-tool",
     "description": "CMD tools for union biz ria systems",
+    "repository": "git://github.com/ecomfe/ub-ria-tool",
     "version": "0.8.0-beta.1",
     "license": "GPL-3.0",
     "author": [
@@ -18,5 +19,9 @@
         "edp-project": "0.x",
         "edp-package": "0.x",
         "etpl": ">=2.0.8"
+    },
+    "preferGlobal": true,
+    "bin": {
+        "ria": "./bin/ria-cli"
     }
 }
