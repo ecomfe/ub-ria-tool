@@ -17,6 +17,8 @@
         "optimist": "0.x",
         "read": "1.x",
         "fs-extra": "0.x",
+        "byline": ">=2.1.0 <3.0.0",
+        "chalk": "0.x",
         "edp-project": "0.x",
         "edp-package": "0.x",
         "etpl": ">=2.0.8"
