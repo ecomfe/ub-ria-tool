@@ -2,7 +2,7 @@
     "name": "ub-ria-tool",
     "description": "CMD tools for union biz ria systems",
     "repository": "git://github.com/ecomfe/ub-ria-tool",
-    "version": "0.8.0-beta.3",
+    "version": "0.8.0-beta.4",
     "license": "GPL-3.0",
     "author": [
         {
