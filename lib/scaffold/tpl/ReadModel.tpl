@@ -9,18 +9,20 @@
 define(
     function (require) {
         var util = require('er/util');
-        var ReadModel = require('common/ReadModel');
+        var ReadModel = require('ub-ria/ReadModel');
         var Data = require('./Data');
+        var GlobalData = require('ub-ria/GlobalData');
 
         /**
          * ${description}只读页数据模型类
          *
-         * @extends common.ReadModel
+         * @extends ub-ria.ReadModel
          * @constructor
          */
         function ${modelType}() {
             ReadModel.apply(this, arguments);
             this.addData(new Data());
+            this.addData('global', GlobalData.getInstance());
         }
 
         util.inherits(${modelType}, ReadModel);

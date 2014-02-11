@@ -1,5 +1,5 @@
 define(function (require) {
-    var ReadAction = require('common/ReadAction');
+    var ReadAction = require('ub-ria/ReadAction');
     var ${actionType} = require('${entity}/Form');
 
     describe('${actionType}Action', function () {

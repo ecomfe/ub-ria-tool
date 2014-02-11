@@ -2,26 +2,28 @@
 <!-- import: ${templateName}Main -->
 
 <!-- target: ${templateName}Main -->
-<div class="view list-view">
-    <section class="list-filter-options">
+<div class="list-action">
+<!-- if: ${canCreate} -->
+    <a data-ui-type="Button" data-ui-id="create" data-ui-skin="spring-add" href="#/${entity}/create">新建${description}</a>
+<!-- /if -->
+</div>
+<div class="list-view">
+    <footer class="list-meta">
+        <!-- if: ${canBatchModify} -->
+        <div class="list-operation">
+            <!-- import: defaultBatchButtons -->
+        </div>
+        <!-- /if -->
         <form class="list-filter" data-ui-type="Form" data-ui-id="filter" action="/slot/search"
             method="GET" novalidate="novalidate">
             <div data-ui-type="Select" data-ui-id="status" data-ui-name="status"
                 data-ui-datasource="@statuses" data-ui-value="@status"
                 data-ui-extension-submit-type="AutoSubmit"></div>
             <!-- TODO: 如有其它筛选条件在此添加 -->
-            <!-- use: listSearchBox(placeholder="输入${descripion}名称") -->
+            <!-- use: listSearchBoxNew(placeholder = "请输入${description}名称") -->
         </form>
-    </section>
-    <!-- TODO: 如有其它独占一块的复杂筛选条件在此添加单独的`<section>`元素 -->
-    <footer class="list-meta">
-        <!-- if: ${canBatchModify} -->
-        <div class="list-operations">
-            <!-- import: defaultBatchButtons -->
-            <!-- TODO: 如有特殊的批量操作在此添加，可删除上一行 -->
-        </div>
-        <!-- /if -->
     </footer>
+    <!-- TODO: 如果有复杂筛选条件在此处添加 -->
     <!-- import: listTable -->
     <!-- import: listPager -->
 </div>

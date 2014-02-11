@@ -1,5 +1,5 @@
 define(function (require) {
-    var ListModel = require('common/ListModel');
+    var ListModel = require('ub-ria/ListModel');
     var ${modelType} = require('${entity}/${modelModule}');
 
     describe('${modelType}', function () {

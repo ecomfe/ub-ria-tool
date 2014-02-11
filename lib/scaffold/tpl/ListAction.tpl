@@ -10,12 +10,12 @@ define(
     function (require) {
         var util = require('er/util');
         var config = require('./config');
-        var ListAction = require('common/ListAction');
+        var ListAction = require('ub-ria/ListAction');
 
         /**
          * ${description}列表
          *
-         * @extends common.ListAction
+         * @extends ub-ria.ListAction
          * @constructor
          */
         function ${actionType}() {
@@ -56,20 +56,6 @@ define(
          * @override
          */
         ${actionType}.prototype.viewType = require('./${viewModule}');
-
-        /**
-         * 默认查询参数
-         *
-         * @param {Object}
-         * @override
-         */
-        ${actionType}.prototype.defaultArgs = {
-            // TODO: 配置默认的查询参数，避免URL里有太多参数，
-            // 这里参数默认值和“不把参数传给后端时后端使用的值”相同，
-            // 如无需要就删除这一段
-            orderBy: 'displayOrder',
-            order: 'asc'
-        };
         
         return ${actionType};
     }

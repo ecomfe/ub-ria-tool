@@ -8,8 +8,9 @@
  */
 define(
     function (require) {
-        var BaseData = require('common/BaseData');
+        var u = require('underscore');
         var util = require('er/util');
+        var BaseData = require('common/BaseData');
 
         /**
          * ${description}数据类

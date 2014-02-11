@@ -1,5 +1,5 @@
 define(function (require) {
-    var ListAction = require('common/ListAction');
+    var ListAction = require('ub-ria/ListAction');
     var ${actionType} = require('${entity}/${actionModule}');
 
     describe('${actionType}Action', function () {

@@ -8,14 +8,14 @@
  */
 define(
     function (require) {
-        var FormAction = require('common/FormAction');
+        var FormAction = require('ub-ria/FormAction');
         var util = require('er/util');
         var config = require('./config');
 
         /**
          * ${description}表单
          *
-         * @extends common.FormAction
+         * @extends ub-ria.FormAction
          * @constructor
          */
         function ${actionType}() {

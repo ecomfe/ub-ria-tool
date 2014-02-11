@@ -1,5 +1,5 @@
 define(function (require) {
-    var FormView = require('common/FormView');
+    var FormView = require('ub-ria/FormView');
     var ${viewType} = require('${entity}/FormView');
 
     describe('${viewType}', function () {

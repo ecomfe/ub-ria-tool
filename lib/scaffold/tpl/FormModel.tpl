@@ -9,18 +9,20 @@
 define(
     function (require) {
         var util = require('er/util');
-        var FormModel = require('common/FormModel');
+        var FormModel = require('ub-ria/FormModel');
         var Data = require('./Data');
+        var GlobalData = require('ub-ria/GlobalData');
 
         /**
          * ${description}表单数据模型类
          *
-         * @extends common.FormModel
+         * @extends ub-ria.FormModel
          * @constructor
          */
         function ${modelType}() {
             FormModel.apply(this, arguments);
             this.addData(new Data());
+            this.addData('global', GlobalData.getInstance());
         }
 
         util.inherits(${modelType}, FormModel);

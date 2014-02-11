@@ -1,5 +1,5 @@
 define(function (require) {
-    var ListView = require('common/ListView');
+    var ListView = require('ub-ria/ListView');
     var Model = require('er/Model');
     var ${viewType} = require('${entity}/${listModule}');
 

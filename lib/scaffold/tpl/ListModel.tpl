@@ -10,18 +10,20 @@ define(
     function (require) {
         var u = require('underscore');
         var util = require('er/util');
-        var ListModel = require('common/ListModel');
+        var ListModel = require('ub-ria/ListModel');
         var Data = require('./Data');
+        var GlobalData = require('ub-ria/GlobalData');
 
         /**
          * ${description}列表数据模型类
          *
-         * @extends common.ListModel
+         * @extends ub-ria.ListModel
          * @constructor
          */
         function ${modelType}() {
             ListModel.apply(this, arguments);
             this.addData(new Data());
+            this.addData('global', GlobalData.getInstance());
         }
 
         util.inherits(${modelType}, ListModel);
@@ -38,9 +40,14 @@ define(
             { status: 1, deny: [1] }
         ];
 
-        // TODO: 如果没有状态属性，移除下面代码
-        var statuses = require('./enum').Status.toArray();
-        statuses.unshift({ text: '全部', value: '' });
+        // TODO: 如果没有状态属性，移除下面代码，如果状态不同，记得改这个数组
+        // 切记不要让任何一项出现`value`为空的情况，详细可参考`ub-ria.ListModel`的实现
+        var Status = require('./enum').Status;
+        var statuses = [
+            { text: '全部', value: 'all' },
+            Status.fromAlias('NORMAL'),
+            Status.fromAlias('REMOVED')
+        ];
 
         var datasource = require('er/datasource');
         /**
@@ -55,6 +62,20 @@ define(
             canCreate: datasource.permission('${entity | const}_NEW'),
             canModify: datasource.permission('${entity | const}_MODIFY'),
             canBatchModify: datasource.permission('${entity |const}_STATUS_MODIFY')
+        };
+
+        /**
+         * 默认查询参数
+         *
+         * @param {Object}
+         * @override
+         */
+        ${actionType}.prototype.defaultArgs = {
+            // TODO: 配置默认的查询参数，避免URL里有太多参数，
+            // 这里参数默认值和“不把参数传给后端时后端使用的值”相同，
+            // 如无需要就删除这一段
+            orderBy: 'displayOrder',
+            order: 'asc'
         };
 
         /**
@@ -81,20 +102,12 @@ define(
          */
         ${modelType}.prototype.getQuery = function () {
             var query = ListModel.prototype.getQuery.apply(this, arguments);
+
             // TODO: 添加请求后端时所需要用到的参数，默认包含：
             // `keyword`、`status`、`order`、`orderBy`、`pageNo`共5个参数
             // 如有其它参数则需向`query`对象添加属性，无额外参数则删掉这个方法。
             // 向后端发送的参数通常来自URL，因此可以通过`this.get('xxx')`直接获得
-            //
-            // 以下为一个典型场景：当默认的查询状态不为“全部”时，为了保持URL的简洁，
-            // 将“全部”映射为`status=all`，而将没有`status`的状态映射为特定的状态集合，
-            // 如果默认的“状态”参数值为“全部”，必须删除以下代码
-            if (!query.status) {
-                query.status = '1,2';
-            }
-            else if (query.status === 'all') {
-                query.status = '';
-            }
+
             return query;
         };
 

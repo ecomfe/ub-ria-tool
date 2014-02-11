@@ -1,5 +1,5 @@
 define(function (require) {
-    var FormModel = require('common/FormModel');
+    var FormModel = require('ub-ria/FormModel');
     var ${modelType} = require('${entity}/FormModel');
 
     describe('${modelType}', function () {

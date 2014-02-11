@@ -9,14 +9,14 @@
 define(
     function (require) {
         var util = require('er/util');
-        var ListView = require('common/ListView');
+        var ListView = require('ub-ria/ListView');
 
         require('tpl!./tpl/${templateFile}.tpl.html');
 
         /**
          * ${description}列表视图类
          *
-         * @extends common.ListView
+         * @extends ub-ria.ListView
          * @constructor
          */
         function ${viewType}() {
@@ -45,7 +45,7 @@ define(
                 width: 100,
                 stable: true,
                 content: function (item) {
-                    var statusItem = Status[item.status];
+                    var statusItem = Status.fromValue(item.status);
                     var status = {
                         type: statusItem.alias.toLowerCase().replace(/_/g, '-'),
                         text: statusItem.text

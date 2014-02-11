@@ -7,22 +7,32 @@
  * @author {${developer.name}(${developer.email})}
  */
 define(
-    function () {
+    function (require) {
         var Enum = require('er/Enum');
 
         var exports = {};
-
-        // TODO: 如果状态与通用的状态相同，可修改为：
-        // exports.Status = require('common/enum').Status;
+        
         /**
          * ${description}状态
          *
          * @enum
          */
         exports.Status = new Enum(
-            { alias: 'REMOVE', text: '删除' },
-            { alias: 'RESTORE', text: '启用' }
+            /**
+             * @property {number} [REMOVED=0]
+             *
+             * 删除
+             */
+            { alias: 'REMOVED', text: '删除' },
+            /**
+             * @property {number} [NORMAL=1]
+             *
+             * 启用
+             */
+            { alias: 'NORMAL', text: '启用' }
         );
+        // TODO: 如果状态与通用的状态相同，可修改为：
+        // exports.Status = require('common/enum').Status;
 
         return exports;
     }
