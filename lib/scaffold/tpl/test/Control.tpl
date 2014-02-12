@@ -1,19 +1,19 @@
 define(function (require) {
-    var ${type} = require('${moduleID}');
+    var <%-: type %> = require('<%- moduleID %>');
 
-    describe('${type}', function () {
+    describe('<%-: type %>', function () {
         it('should be a constructor', function () {
-            expect(${type}).toBeOfType('function');
+            expect(<%-: type %>).toBeOfType('function');
         });
 
         it('should be instaitable', function () {
-            expect(new ${type}()).toBeOfType('object');
+            expect(new <%-: type %>()).toBeOfType('object');
         });
 
-        it('should extends ${baseType}', function () {
-            var instance = new ${type}();
-            var ${baseType} = require('${baseTypeModuleID}');
-            expect(type instanceof ${baseType}).toBe(true);
+        it('should extends <%-: baseType %>', function () {
+            var instance = new <%-: type %>();
+            var <%-: baseType %> = require('<%- baseTypeModuleID %>');
+            expect(type instanceof <%-: baseType %>).toBe(true);
         });
 
         describe('created via script', function () {

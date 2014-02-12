@@ -1,10 +1,10 @@
 /**
- * ${project.alias}
+ * <%-: project.alias %>
  * Copyright 2014 Baidu Inc. All rights reserved.
  *
  * @ignore
- * @file ${description}列表
- * @author ${developer.name}(${developer.email})
+ * @file <%-: description %>列表
+ * @author <%-: developer.name %>(<%- developer.email %>)
  */
 define(
     function (require) {
@@ -13,16 +13,16 @@ define(
         var ListAction = require('ub-ria/ListAction');
 
         /**
-         * ${description}列表
+         * <%-: description %>列表
          *
          * @extends ub-ria.ListAction
          * @constructor
          */
-        function ${actionType}() {
+        function <%-: actionType %>() {
             ListAction.apply(this, arguments);
         }
 
-        util.inherits(${actionType}, ListAction);
+        util.inherits(<%-: actionType %>, ListAction);
 
         /**
          * 当前Action的分组名称
@@ -31,7 +31,7 @@ define(
          * @override
          */
         // TODO: 必须设置这个值，根据系统的导航条进行设置
-        ${actionType}.prototype.group = 'unknown';
+        <%-: actionType %>.prototype.group = 'unknown';
 
         /**
          * 当前Action负责的实体的描述名称
@@ -39,7 +39,7 @@ define(
          * @type {string}
          * @override
          */
-        ${actionType}.prototype.entityDescription = config.description;
+        <%-: actionType %>.prototype.entityDescription = config.description;
 
         /**
          * 数据模型类型
@@ -47,7 +47,7 @@ define(
          * @type {Function}
          * @override
          */
-        ${actionType}.prototype.modelType = require('./${modelModule}');
+        <%-: actionType %>.prototype.modelType = require('./<%- modelModule %>');
 
         /**
          * 视图类型
@@ -55,8 +55,8 @@ define(
          * @type {Function}
          * @override
          */
-        ${actionType}.prototype.viewType = require('./${viewModule}');
+        <%-: actionType %>.prototype.viewType = require('./<%- viewModule %>');
         
-        return ${actionType};
+        return <%-: actionType %>;
     }
 );

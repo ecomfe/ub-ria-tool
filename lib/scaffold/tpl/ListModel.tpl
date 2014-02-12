@@ -1,10 +1,10 @@
 /**
- * ${project.alias}
+ * <%-: project.alias %>
  * Copyright 2014 Baidu Inc. All rights reserved.
  *
  * @ignore
- * @file ${description}列表数据模型类
- * @author ${developer.name}(${developer.email})
+ * @file <%-: description %>列表数据模型类
+ * @author <%-: developer.name %>(<%- developer.email %>)
  */
 define(
     function (require) {
@@ -15,18 +15,18 @@ define(
         var GlobalData = require('ub-ria/GlobalData');
 
         /**
-         * ${description}列表数据模型类
+         * <%-: description %>列表数据模型类
          *
          * @extends ub-ria.ListModel
          * @constructor
          */
-        function ${modelType}() {
+        function <%-: modelType %>() {
             ListModel.apply(this, arguments);
             this.addData(new Data());
             this.addData('global', GlobalData.getInstance());
         }
 
-        util.inherits(${modelType}, ListModel);
+        util.inherits(<%-: modelType %>, ListModel);
 
         /**
          * 状态迁移表。
@@ -56,12 +56,12 @@ define(
          * @type {Object}
          * @override
          */
-        ${modelType}.prototype.datasource = {
+        <%-: modelType %>.prototype.datasource = {
             statuses: datasource.constant(statuses),
             // 所需权限
-            canCreate: datasource.permission('${entity | const}_NEW'),
-            canModify: datasource.permission('${entity | const}_MODIFY'),
-            canBatchModify: datasource.permission('${entity |const}_STATUS_MODIFY')
+            canCreate: datasource.permission('<%- entity | const %>_NEW'),
+            canModify: datasource.permission('<%- entity | const %>_MODIFY'),
+            canBatchModify: datasource.permission('<%- entity | const %>_STATUS_MODIFY')
         };
 
         /**
@@ -70,7 +70,7 @@ define(
          * @param {Object}
          * @override
          */
-        ${actionType}.prototype.defaultArgs = {
+        <%-: actionType %>.prototype.defaultArgs = {
             // TODO: 配置默认的查询参数，避免URL里有太多参数，
             // 这里参数默认值和“不把参数传给后端时后端使用的值”相同，
             // 如无需要就删除这一段
@@ -83,7 +83,7 @@ define(
          *
          * @override
          */
-        ${modelType}.prototype.prepare = function () {
+        <%-: modelType %>.prototype.prepare = function () {
             // TODO: 下面的代码为每一项添加操作列的权限，如果没有权限需求则删掉这个方法
             var canModify = this.get('canModify');
             u.each(
@@ -100,7 +100,7 @@ define(
          * @return {Object}
          * @override
          */
-        ${modelType}.prototype.getQuery = function () {
+        <%-: modelType %>.prototype.getQuery = function () {
             var query = ListModel.prototype.getQuery.apply(this, arguments);
 
             // TODO: 添加请求后端时所需要用到的参数，默认包含：
@@ -111,6 +111,6 @@ define(
             return query;
         };
 
-        return ${modelType};
+        return <%-: modelType %>;
     }
 );

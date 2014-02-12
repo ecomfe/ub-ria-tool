@@ -1,29 +1,29 @@
 /**
- * ${project.alias}
+ * <%-: project.alias %>
  * Copyright 2014 Baidu Inc. All rights reserved.
  *
  * @ignore
- * @file ${description}列表视图类
- * @author ${developer.name}(${developer.email})
+ * @file <%-: description %>列表视图类
+ * @author <%-: developer.name %>(<%- developer.email %>)
  */
 define(
     function (require) {
         var util = require('er/util');
         var ListView = require('ub-ria/ListView');
 
-        require('tpl!./tpl/${templateFile}.tpl.html');
+        require('tpl!./tpl/<%-: templateFile %>.tpl.html');
 
         /**
-         * ${description}列表视图类
+         * <%-: description %>列表视图类
          *
          * @extends ub-ria.ListView
          * @constructor
          */
-        function ${viewType}() {
+        function <%-: viewType %>() {
             ListView.apply(this, arguments);
         }
 
-        util.inherits(${viewType}, ListView);
+        util.inherits(<%-: viewType %>, ListView);
 
         /** 
          * 使用的模板名称
@@ -31,7 +31,7 @@ define(
          * @type {string}
          * @override
          */
-        ${viewType}.prototype.template = '${templateName}';
+        <%-: viewType %>.prototype.template = '<%- templateName %>';
 
         var Status = require('./enum').Status;
 
@@ -67,13 +67,13 @@ define(
                             text: '修改',
                             type: 'modify',
                             auth: item.canModify,
-                            url: '#/${entity}/update~id=' + item.id
+                            url: '#/<%-: entity %>/update~id=' + item.id
                         },
                         {
                             text: '查看',
                             type: 'read',
                             auth: !item.canModify,
-                            url: '#/${entity}/view~id=' + item.id
+                            url: '#/<%-: entity %>/view~id=' + item.id
                         }
                     ];
 
@@ -88,12 +88,12 @@ define(
          *
          * @type {Object}
          */
-        ${viewType}.prototype.uiProperties = {
+        <%-: viewType %>.prototype.uiProperties = {
             table: {
                 fields: tableFields
             }
         };
         
-        return ${viewType};
+        return <%-: viewType %>;
     }
 );

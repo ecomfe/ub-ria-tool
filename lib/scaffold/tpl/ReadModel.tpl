@@ -1,10 +1,10 @@
 /**
- * ${project.alias}
+ * <%-: project.alias %>
  * Copyright 2014 Baidu Inc. All rights reserved.
  *
  * @ignore
- * @file ${description}只读页数据模型类
- * @author ${developer.name}(${developer.email})
+ * @file <%-: description %>只读页数据模型类
+ * @author <%-: developer.name %>(<%- developer.email %>)
  */
 define(
     function (require) {
@@ -14,18 +14,18 @@ define(
         var GlobalData = require('ub-ria/GlobalData');
 
         /**
-         * ${description}只读页数据模型类
+         * <%-: description %>只读页数据模型类
          *
          * @extends ub-ria.ReadModel
          * @constructor
          */
-        function ${modelType}() {
+        function <%-: modelType %>() {
             ReadModel.apply(this, arguments);
             this.addData(new Data());
             this.addData('global', GlobalData.getInstance());
         }
 
-        util.inherits(${modelType}, ReadModel);
+        util.inherits(<%-: modelType %>, ReadModel);
 
         /**
          * 数据源配置
@@ -33,12 +33,12 @@ define(
          * @type {Object}
          * @override
          */
-        ${modelType}.prototype.datasource = {
+        <%-: modelType %>.prototype.datasource = {
             crumbPath: function (model) {
                 var path = [
                     { 
-                        text: '${description}', 
-                        href: '#/${entity}/list'
+                        text: '<%-: description %>', 
+                        href: '#/<%-: entity %>/list'
                     },
                     { 
                         text: model.get('title')
@@ -49,6 +49,6 @@ define(
             // TODO: 添加除加载修改用的实体外的其它数据源，如果没有则删除此段代码
         };
 
-        return ${modelType};
+        return <%-: modelType %>;
     }
 );

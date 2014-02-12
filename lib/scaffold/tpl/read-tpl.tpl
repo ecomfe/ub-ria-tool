@@ -1,15 +1,15 @@
-<!-- target: ${templateName} -->
+<!-- target: <%-: templateName %> -->
 <div class="read fullsize-page">
     <!-- import: formCrumb -->
-    <!-- import: ${templateName}Main -->
+    <!-- import: <%-: templateName %>Main -->
 </div>
 
-<!-- target: ${templateName}Main -->
+<!-- target: <%-: templateName %>Main -->
 <div class="read-content">
-    <!-- import: ${templateName}CommonSection -->
+    <!-- import: <%-: templateName %>CommonSection -->
 </div>
 
-<!-- target: ${templateName}CommonSection -->
+<!-- target: <%-: templateName %>CommonSection -->
 <section class="read-section">
     <h3 class="read-section-title">基本信息</h3>
     <div class="read-field">
