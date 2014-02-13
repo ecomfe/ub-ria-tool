@@ -9,14 +9,14 @@
 define(
     function (require) {
         var util = require('er/util');
-        var ListView = require('ub-ria/ListView');
+        var ListView = require('ub-ria/mvc/ListView');
 
         require('tpl!./tpl/<%-: templateFile %>.tpl.html');
 
         /**
          * <%-: description %>列表视图类
          *
-         * @extends ub-ria.ListView
+         * @extends ub-ria.mvc.ListView
          * @constructor
          */
         function <%-: viewType %>() {

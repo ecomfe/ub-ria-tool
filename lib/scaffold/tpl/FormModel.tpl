@@ -9,14 +9,14 @@
 define(
     function (require) {
         var util = require('er/util');
-        var FormModel = require('ub-ria/FormModel');
+        var FormModel = require('ub-ria/mvc/FormModel');
         var Data = require('./Data');
-        var GlobalData = require('ub-ria/GlobalData');
+        var GlobalData = require('common/GlobalData');
 
         /**
          * <%-: description %>表单数据模型类
          *
-         * @extends ub-ria.FormModel
+         * @extends ub-ria.mvc.FormModel
          * @constructor
          */
         function <%-: modelType %>() {

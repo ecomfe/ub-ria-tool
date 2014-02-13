@@ -9,14 +9,14 @@
 define(
     function (require) {
         var util = require('er/util');
-        var ReadModel = require('ub-ria/ReadModel');
+        var ReadModel = require('ub-ria/mvc/ReadModel');
         var Data = require('./Data');
-        var GlobalData = require('ub-ria/GlobalData');
+        var GlobalData = require('common/GlobalData');
 
         /**
          * <%-: description %>只读页数据模型类
          *
-         * @extends ub-ria.ReadModel
+         * @extends ub-ria.mvc.ReadModel
          * @constructor
          */
         function <%-: modelType %>() {

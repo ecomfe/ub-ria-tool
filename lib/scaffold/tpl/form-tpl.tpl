@@ -15,7 +15,7 @@
     <div class="form-field">
         <label for="<%-: entity %>-form-name" class="form-field-name">名称：</label>
         <input data-ui-type="TextBox" data-ui-id="name"
-            data-ui-required="required" data-ui-length="100"
+            data-ui-required="required" data-ui-length="@rule.maxLength"
             data-value="@name" id="<%-: entity %>-form-name" name="name" title="<%- description %>名称"
             data-ui-extension-count-type="WordCount" />
     </div>

@@ -10,12 +10,12 @@ define(
     function (require) {
         var util = require('er/util');
         var config = require('./config');
-        var ReadAction = require('ub-ria/ReadAction');
+        var ReadAction = require('ub-ria/mvc/ReadAction');
 
         /**
          * <%-: description %>表单
          *
-         * @extends ub-ria.ReadAction
+         * @extends ub-ria.mvc.ReadAction
          * @constructor
          */
         function <%-: actionType %>() {

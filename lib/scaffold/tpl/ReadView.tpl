@@ -9,14 +9,14 @@
 define(
     function (require) {
         var util = require('er/util');
-        var ReadView = require('ub-ria/ReadView');
+        var ReadView = require('ub-ria/mvc/ReadView');
         
         require('tpl!./tpl/<%-: templateFile %>.tpl.html');
 
         /**
          * <%-: description %>只读页视图类
          *
-         * @extends ub-ria.ReadView
+         * @extends ub-ria.mvc.ReadView
          * @constructor
          */
         function <%-: viewType %>() {

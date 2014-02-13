@@ -10,14 +10,14 @@ define(
     function (require) {
         var u = require('underscore');
         var util = require('er/util');
-        var ListModel = require('ub-ria/ListModel');
+        var ListModel = require('ub-ria/mvc/ListModel');
         var Data = require('./Data');
-        var GlobalData = require('ub-ria/GlobalData');
+        var GlobalData = require('common/GlobalData');
 
         /**
          * <%-: description %>列表数据模型类
          *
-         * @extends ub-ria.ListModel
+         * @extends ub-ria.mvc.ListModel
          * @constructor
          */
         function <%-: modelType %>() {

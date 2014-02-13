@@ -9,14 +9,14 @@
 define(
     function (require) {
         var util = require('er/util');
-        var FormView = require('ub-ria/FormView');
+        var FormView = require('ub-ria/mvc/FormView');
 
         require('tpl!./tpl/<%-: templateFile %>.tpl.html');
 
         /**
          * <%-: description %>表单视图类
          *
-         * @extends ub-ria.FormView
+         * @extends ub-ria.mvc.FormView
          * @constructor
          */
         function <%-: viewType %>() {
