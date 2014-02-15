@@ -36,11 +36,11 @@ define(
         <%-: modelType %>.prototype.datasource = {
             crumbPath: function (model) {
                 var path = [
-                    { 
-                        text: '<%-: description %>', 
+                    {
+                        text: '<%-: description %>',
                         href: '#/<%-: entity %>/list'
                     },
-                    { 
+                    {
                         text: model.get('title')
                     }
                 ];

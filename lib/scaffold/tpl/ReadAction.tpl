@@ -52,7 +52,7 @@ define(
         /**
          * 数据模型类型
          *
-         * @type {function}
+         * @type {Function}
          * @override
          */
         <%-: actionType %>.prototype.modelType = require('./<%- modelType %>');
