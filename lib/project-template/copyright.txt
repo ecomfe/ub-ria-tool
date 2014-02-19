@@ -1,0 +1,1 @@
+/*! ${project.alias} | 2014 Baidu Inc. All Rights Reserved. */
