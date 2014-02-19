@@ -13,6 +13,7 @@ results
 
 npm-debug.log
 node_modules
+!lib/project-template/tool/node_modules
 
 bin/*
 !bin/ria-cli
