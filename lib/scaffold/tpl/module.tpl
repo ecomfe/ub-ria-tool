@@ -32,7 +32,7 @@ define(
                 auth: ['<%-: entity | const %>_MODIFY']
             },
             {
-                path: '/<%-: entity %>/view',!
+                path: '/<%-: entity %>/view',
                 type: '<%-: entity %>/Read',
                 title: '查看<%-: description %>信息',
                 auth: ['<%-: entity | const %>_VIEW']
@@ -51,4 +51,4 @@ define(
             description: '<%-: description %>'
         };
     }
-);        
+);

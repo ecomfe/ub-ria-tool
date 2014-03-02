@@ -33,7 +33,7 @@
         data-ui-datasource="@statuses" data-ui-value="@status"
         data-ui-extension-submit-type="AutoSubmit"></div>
     <!-- TODO: 如有其它筛选条件在此添加 -->
-    <!-- use: listSearchBoxNew(placeholder = "请输入<%-: description %>名称") -->
+    <!-- use: listSearchBox(placeholder = "请输入<%-: description %>名称") -->
 </form>
 
 <!-- target: <%-: templateName %>ExtraFilter -->

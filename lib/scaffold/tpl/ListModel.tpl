@@ -59,9 +59,9 @@ define(
         <%-: modelType %>.prototype.datasource = {
             statuses: datasource.constant(statuses),
             // 所需权限
-            canCreate: datasource.permission('<%- entity | const %>_NEW'),
-            canModify: datasource.permission('<%- entity | const %>_MODIFY'),
-            canBatchModify: datasource.permission('<%- entity | const %>_STATUS_MODIFY')
+            canCreate: datasource.permission('<%-: entity | const %>_NEW'),
+            canModify: datasource.permission('<%-: entity | const %>_MODIFY'),
+            canBatchModify: datasource.permission('<%-: entity | const %>_STATUS_MODIFY')
         };
 
         /**
@@ -70,7 +70,7 @@ define(
          * @param {Object}
          * @override
          */
-        <%-: actionType %>.prototype.defaultArgs = {
+        <%-: modelType %>.prototype.defaultArgs = {
             // TODO: 配置默认的查询参数，避免URL里有太多参数，
             // 这里参数默认值和“不把参数传给后端时后端使用的值”相同，
             // 如无需要就删除这一段

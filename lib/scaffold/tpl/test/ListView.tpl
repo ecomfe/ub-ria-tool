@@ -1,7 +1,7 @@
 define(function (require) {
     var ListView = require('ub-ria/ListView');
     var Model = require('er/Model');
-    var <%-: viewType %> = require('<%- entity %>/<%- listModule %>');
+    var <%-: viewType %> = require('<%- entity %>/<%- viewModule %>');
 
     describe('<%-: viewType %>', function () {
         it('should be a constructor', function () {

@@ -56,7 +56,7 @@ define(
          * @override
          */
         <%-: actionType %>.prototype.viewType = require('./<%- viewModule %>');
-        
+
         return <%-: actionType %>;
     }
 );

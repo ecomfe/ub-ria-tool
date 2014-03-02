@@ -1,0 +1,61 @@
+<!-- target: listSearchInfo -->
+<p>搜索文字：
+    <span class="list-search-keyword" title="${keyword}">${keyword}</span>
+    <a class="list-search-clear" href="${listWithoutKeywordURL}">清空</a>
+</p>
+
+<!-- target: batchButton -->
+<div data-ui-type="Button" data-ui-id="${statusName}"
+    data-ui-group="batch" data-ui-data-status="${status}"
+    data-ui-extension-data-type="CustomData">${command}</div>
+
+<!-- target: batchRestoreButton -->
+<!-- use: batchButton(status = 1, statusName = "restore", command = "启用") -->
+
+<!-- target: batchRemoveButton -->
+<!-- use: batchButton(status = 0, statusName = "remove", command = "删除") -->
+
+<!-- target: defaultBatchButtons -->
+<!-- import: batchRestoreButton -->
+<!-- import: batchRemoveButton -->
+
+<!-- target: listSearchBox -->
+<input name="keyword" class="list-keyword" maxlength="200"
+    data-ui-type="SearchBox" data-ui-id="keyword"
+    data-ui-height="19"
+    data-ui-text="@keyword"
+    data-ui-placeholder="${placeholder}"
+    data-ui-extension-submit-type="AutoSubmit" />
+
+<!-- target: listTable -->
+<div data-ui-type="Table" data-ui-id="table" data-ui-datasource="@results"
+    data-ui-order-by="@orderBy" data-ui-order="@order" data-ui-select="@selectMode"
+    data-ui-extension-tip-type="TableTip">
+</div>
+
+<!-- target: listTableWithCommand -->
+<div data-ui-type="Table" data-ui-id="table" data-ui-datasource="@results"
+    data-ui-order-by="@orderBy" data-ui-order="@order" data-ui-select="@selectMode"
+    data-ui-extension-command-type="Command"
+    data-ui-extension-tip-type="TableTip">
+</div>
+
+<!-- target: listTableWithCommandAndSubrow -->
+<div data-ui-type="Table" data-ui-id="table" data-ui-datasource="@results"
+    data-ui-order-by="@orderBy" data-ui-order="@order" data-ui-select="@selectMode"
+    data-ui-extension-command-type="Command"
+    data-ui-extension-tip-type="TableTip"
+    data-ui-extension-tablesubrow-type="TableSubrow">
+</div>
+
+<!-- target: listPager -->
+<footer data-ui-type="Pager" data-ui-id="pager"
+    data-ui-count="@totalCount" data-ui-page="@page" data-ui-page-size="@pageSize"
+    data-ui-page-type="plain" data-ui-layout="alignRight">
+</footer>
+
+<!-- target: listExtraFilterSubmit -->
+<div class="form-field list-extra-filter-submit-field">
+    <button data-ui-type="Button" data-ui-id="extra-filter-submit" type="submit">筛选</button>
+    <div data-ui-type="Button" data-ui-id="extra-filter-cancel" data-ui-skin="link">取消</div>
+</div>

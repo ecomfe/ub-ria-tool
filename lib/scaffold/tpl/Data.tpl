@@ -1,7 +1,7 @@
 /**
  * <%-: project.alias %>
  * Copyright 2014 Baidu Inc. All rights reserved.
- * 
+ *
  * @ignore
  * @file <%-: description %>数据类
  * @author <%-: developer.name %>(<%- developer.email %>)
@@ -78,4 +78,4 @@ define(
 
         return <%-: entity | pascal %>Data;
     }
-);        
+);
