@@ -40,15 +40,24 @@
         if (location.search.indexOf('DEBUG') >= 0) {
             window.DEBUG = !0;
         }
-        
-        require.config({});
-        
-        require(
-            ['common/main', 'common/gray'],
-            function (main) {
-                main.start();
+
+        require.config({
+            'baseUrl': 'src'
+        });
+
+        (function () {
+            function startSystem() {
+                require(
+                    ['common/main', 'common/gray'],
+                    function (main) {
+                        main.start();
+                    }
+                );
             }
-        );
+
+            var STARTUP_MODULES = ['startup/biz', 'startup/echarts', 'startup/ria', 'startup/ui'];
+            require(STARTUP_MODULES, startSystem);
+        }());
     </script>
 </body>
 </html>
