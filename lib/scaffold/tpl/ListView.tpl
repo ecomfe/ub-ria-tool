@@ -25,7 +25,7 @@ define(
 
         util.inherits(<%-: viewType %>, ListView);
 
-        /** 
+        /**
          * 使用的模板名称
          *
          * @type {string}
@@ -33,27 +33,53 @@ define(
          */
         <%-: viewType %>.prototype.template = '<%- templateName %>';
 
-        var Status = require('./enum').Status;
+        <%
+            var fields = list.table.fields;
+            for (var i = 0; i < fields.length; i++) {
+                if (fields[i][0] === 'enum') {
+        %>var <%=: fields[i][1] | pascal %> = require('./enum').<%=: fields[i][1] | pascal %>;<%
+                }
+            }
+        %>
 
-        var tableFields = [
-            // TODO: 表格列配置，添加列表相关列
+        <%-: viewType %>.prototype.tableFields = [
+            // TODO: 表格列配置，添加列表相关列<%
+                var fields = list.table.fields;
+                for (var i = 0; i < fields.length; i++) {
+                    if (fields[i][0] === 'enum') {
+            %>
             {
-                title: '状态',
-                field: 'status',
+                title: '<%- fields[i][2] %>',
+                field: '<%- fields[i][1] %>',
                 sortable: false,
                 resizable: false,
                 width: 100,
                 stable: true,
                 content: function (item) {
-                    var statusItem = Status.fromValue(item.status);
-                    var status = {
-                        type: statusItem.alias.toLowerCase().replace(/_/g, '-'),
-                        text: statusItem.text
+                    var <%- fields[i][1] %>Item = <%=: fields[i][1] | pascal %>.fromValue(item.<%- fields[i][1] %>);
+                    var <%- fields[i][1] %> = {
+                        type: <%- fields[i][1] %>Item.alias.toLowerCase().replace(/_/g, '-'),
+                        text: <%- fields[i][1] %>Item.text
                     };
                     var Table = require('esui/Table');
-                    return Table.status(status);
+                    return Table.<%- fields[i][1] %>(<%- fields[i][1] %>);
                 }
-            },
+            },<%
+                    }
+                    if (fields[i][0] === 'field') {
+            %>
+            {
+                title: '<%- fields[i][2] %>',
+                field: '<%- fields[i][1] %>',
+                sortable: false,
+                resizable: false,
+                width: 100,
+                stable: true,
+                content: '<%- fields[i][1] %>'
+            },<%
+                }
+            }
+            %>
             {
                 title: '操作',
                 field: 'operation',
@@ -93,7 +119,7 @@ define(
                 fields: tableFields
             }
         };
-        
+
         return <%-: viewType %>;
     }
 );

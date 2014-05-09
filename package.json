@@ -1,32 +1,33 @@
 {
-    "name": "ub-ria-tool",
-    "description": "CMD tools for union biz ria systems",
-    "repository": "git://github.com/ecomfe/ub-ria-tool",
-    "version": "0.8.0-beta.6",
-    "license": "GPL-3.0",
-    "author": [
-        {
-            "name": "otakustay",
-            "email": "otakustay@gmail.com"
-        }
-    ],
-    "dependencies": {
-        "underscore": "1.x",
-        "underscore.string": "2.x",
-        "async": "0.x",
-        "optimist": "0.x",
-        "read": "1.x",
-        "fs-extra": "0.x",
-        "ejs": "0.x",
-        "glob": "3.x",
-        "byline": ">=2.1.0 <3.0.0",
-        "chalk": "0.x",
-        "edp-project": "0.x",
-        "edp-package": "0.x",
-        "etpl": ">=2.0.8"
-    },
-    "preferGlobal": true,
-    "bin": {
-        "ria": "./bin/ria-cli"
+  "name": "ub-ria-tool",
+  "description": "CMD tools for union biz ria systems",
+  "repository": "git://github.com/ecomfe/ub-ria-tool",
+  "version": "0.8.0-beta.6",
+  "license": "GPL-3.0",
+  "author": [
+    {
+      "name": "otakustay",
+      "email": "otakustay@gmail.com"
     }
+  ],
+  "dependencies": {
+    "underscore": "1.x",
+    "underscore.string": "2.x",
+    "async": "0.x",
+    "optimist": "0.x",
+    "read": "1.x",
+    "fs-extra": "0.x",
+    "ejs": "0.x",
+    "glob": "3.x",
+    "byline": ">=2.1.0 <3.0.0",
+    "chalk": "0.x",
+    "edp-project": "0.x",
+    "edp-package": "0.x",
+    "etpl": ">=2.0.8",
+    "pluralize": "0.0.9"
+  },
+  "preferGlobal": true,
+  "bin": {
+    "ria": "./bin/ria-cli"
+  }
 }

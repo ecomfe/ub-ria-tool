@@ -1,7 +1,7 @@
 /**
  * <%-: project.alias %>
  * Copyright 2014 Baidu Inc. All rights reserved.
- * 
+ *
  * @ignore
  * @file <%-: description %>模块枚举
  * @author {<%-: developer.name %>(<%- developer.email %>)}
@@ -9,9 +9,9 @@
 define(
     function (require) {
         var Enum = require('er/Enum');
-
+console.log(Enum);
         var exports = {};
-        
+
         /**
          * <%-: description %>状态
          *
