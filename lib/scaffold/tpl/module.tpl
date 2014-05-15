@@ -9,31 +9,32 @@
 define(
     function (require) {
         var u = require('underscore');
+        var ActionFactory = require('common/ActionFactory');
 
         var actions = [
             {
                 path: '/<%-: entity %>/list',
-                type: '<%-: entity %>/List',
+                type: new ActionFactory('<%-: entity %>/List'),
                 title: '<%-: description %> - 列表',
                 auth: ['<%-: entity | const %>_VIEW']
             },
             {
                 path: '/<%-: entity %>/create',
-                type: '<%-: entity %>/Form',
+                type: new ActionFactory('<%-: entity %>/Form'),
                 title: '新建<%-: description %>',
                 args: { formType: 'create' },
                 auth: ['<%-: entity | const %>_MODIFY']
             },
             {
                 path: '/<%-: entity %>/update',
-                type: '<%-: entity %>/Form',
+                type: new ActionFactory('<%-: entity %>/Form'),
                 title: '修改<%-: description %>',
                 args: { formType: 'update' },
                 auth: ['<%-: entity | const %>_MODIFY']
             },
             {
                 path: '/<%-: entity %>/view',
-                type: '<%-: entity %>/Read',
+                type: new ActionFactory('<%-: entity %>/Read'),
                 title: '查看<%-: description %>信息',
                 auth: ['<%-: entity | const %>_VIEW']
             },

@@ -36,18 +36,29 @@ define(
          */
         // TODO: 如果只有“恢复”和“删除”两个状态且符合以下配置，则删除这个属性
         ListModel.prototype.statusTransitions = [
-            { status: 0, deny: [0] },
-            { status: 1, deny: [1] }
+            // accept为该操作接受的状态，deny为拒绝状态，都存在时取差集<% for (var i = 0; i < list.batch.length; i++) { %>
+            {
+                status: <%-: list.batch[i].status %>,<% if (list.batch[i].accept) { %>
+                accept: <%=: list.batch[i].accept | array
+                %><% } %><% if (list.batch[i].accept && list.batch[i].deny) { %>,<% } %><% if (list.batch[i].deny) { %>
+                deny: <%=: list.batch[i].deny | array %><% } %>
+            }
+            <% } %>
         ];
+
 
         // TODO: 如果没有状态属性，移除下面代码，如果状态不同，记得改这个数组
         // 切记不要让任何一项出现`value`为空的情况，详细可参考`ub-ria.ListModel`的实现
-        var Status = require('./enum').Status;
-        var statuses = [
-            { text: '全部', value: 'all' },
+        <% for (var i = 0; i < list.filter.length; i++) { %>
+        var <%=: list.filter[i] | pascal %> = require('./enum').<%=: list.filter[i] | pascal %>;
+        var <%=: list.filter[i] | plural | camel %> = [
+            { text: '全部', value: 'all' }<% if (list.filter[i] === 'status') { %>,
             Status.fromAlias('NORMAL'),
             Status.fromAlias('REMOVED')
+            // TODO：如果有其它状态，请按照上述格式添加<% } else { %>
+            // TODO: 请按照规则按顺序添加需要的筛选项目，例如`Status.fromAlias('REMOVED')`<% } %>
         ];
+        <% } %>
 
         var datasource = require('er/datasource');
         /**
@@ -57,7 +68,9 @@ define(
          * @override
          */
         <%-: modelType %>.prototype.datasource = {
-            statuses: datasource.constant(statuses),
+            // 筛选项数据源 <% for (var i = 0; i < list.filter.length; i++) { %>
+            <%=: list.filter[i] | plural | camel %>: datasource.constant(<%=: list.filter[i] | plural | camel %>),<% } %>
+
             // 所需权限
             canCreate: datasource.permission('<%-: entity | const %>_NEW'),
             canModify: datasource.permission('<%-: entity | const %>_MODIFY'),
