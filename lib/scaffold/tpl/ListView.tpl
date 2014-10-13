@@ -2,12 +2,86 @@
  * <%-: project.alias %>
  * Copyright 2014 Baidu Inc. All rights reserved.
  *
- * @ignore
  * @file <%-: description %>列表视图类
+ * @class <%-: viewType %>
+ * @extends common.ListView
  * @author <%-: developer.name %>(<%- developer.email %>)
  */
 define(
     function (require) {
+        require('tpl!./tpl/list.tpl.html');
+
+        var u = require('common/util');
+        var Status = require('./enum').Status;
+
+        var exports = {};
+
+        /**
+         * @override
+         */
+        exports.template = '<%- templateName %>';
+
+        /**
+         * @override
+         */
+        exports.tableFields = [
+            {
+                title: '名称',
+                field: 'name',
+                sortable: true,
+                resizable: true,
+                width: 100,
+                content: 'name'
+            },
+            {
+                title: 'ID',
+                field: 'id',
+                sortable: true,
+                resizable: false,
+                width: 80,
+                stable: true,
+                content: 'id'
+            },
+            {
+                title: '状态',
+                field: 'status',
+                sortable: false,
+                resizable: false,
+                width: 90,
+                stable: true,
+                content: function (item) {
+                    var statusText = Status.getTextFromValue(item.status) || '--';
+
+                    return statusText;
+                }
+            }
+            // TODO: 其它表格字段在此添加
+        ];
+
+        /**
+         * @override
+         */
+        exports.constructor = function () {
+            this.$super(arguments);
+
+            // 批量设置控件事件
+            this.addUIEvents({
+                // TODO: 添加控件事件，如果有的话，否则删除该接口
+            });
+        };
+
+        var <%-: viewType %> = require('eoo').create(require('common/ListView'), exports);
+
+        return <%-: viewType %>;
+
+
+
+
+
+
+
+
+
         var util = require('er/util');
         var ListView = require('ub-ria/mvc/ListView');
 
@@ -25,7 +99,7 @@ define(
 
         util.inherits(<%-: viewType %>, ListView);
 
-        /** 
+        /**
          * 使用的模板名称
          *
          * @type {string}
@@ -93,7 +167,7 @@ define(
                 fields: tableFields
             }
         };
-        
+
         return <%-: viewType %>;
     }
 );
