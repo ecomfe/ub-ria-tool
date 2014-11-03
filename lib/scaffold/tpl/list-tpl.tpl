@@ -1,40 +1,56 @@
-<!-- target: <%-: templateName %> -->
-<div class="list fullsize-page">
-    <!-- import: <%-: templateName %>Main -->
-</div>
+<!-- target: <%-: templateName %>(master = listPage) -->
+<!-- content: crumb -->
+    <!-- import: <%-: templateName %>Crumb -->
+<!-- /content -->
+<!-- content: main -->
+<!-- import: <%-: templateName %>Main -->
+<!-- /content -->
 
-<!-- target: <%-: templateName %>Main -->
-<!-- if: ${canCreate} -->
-<div class="list-action">
-    <a data-ui-type="Button" data-ui-id="create" data-ui-skin="spring-add" href="#/<%-: entity %>/create">新建<%- description %></a>
-</div>
+<!-- target : <%-: templateName %>Crumb(master = crumb) -->
+<!-- content: path -->
+    <span><%-: description %></span>
+<!-- /content -->
+
+<!-- target: deliveryListMain(master = listView)  -->
+<!-- content: actionButtons -->
+    <a data-ui-type="Link" data-ui-id="create" data-ui-skin="add" data-ui-href="#/<%-: entity %>/create">新建<%-: description %></a>
+<!-- /content -->
+<!-- if: ${canBatchModify} -->
+    <!-- content: bacthOperation -->
+        <!-- use: batchButton(status = 0, statusName = "stop", command = "删除") -->
+        <!-- use: batchButton(status = 1, statusName = "restore", command = "启用") -->
+    <!-- /content -->
 <!-- /if -->
-<div class="list-view">
-    <footer class="list-meta">
-        <!-- if: ${canBatchModify} -->
-        <div class="list-operation">
-            <!-- import: defaultBatchButtons -->
-        </div>
-        <!-- /if -->
-        <!-- import: <%-: templateName %>Filter -->
-    </footer>
-    <!-- import: <%-: templateName %>ExtraFilter -->
-    <section class="list-search-parameter">
-        <!-- import: listSearchInfo -->
-    </section>
-    <!-- import: listTable -->
-    <!-- import: listPager -->
-</div>
+<!-- content: filter -->
+    <esui-button data-ui-id="filter-switch" data-ui-skin="select">筛选</esui-button>
+<!-- /content -->
+<!-- content: searchbox -->
+    <!-- use: listSearchBox(placeholder = "输入<%-: description %>ID或名称") -->
+<!-- /content -->
+<!-- content: listFilter -->
+    <!-- import: deliveryListFilters -->
+<!-- /content -->
+<!-- content: table -->
+    <!-- use: listTable(useCommand = true) -->
+<!-- /content -->
 
-<!-- target: <%-: templateName %>Filter -->
-<form class="list-filter" data-ui-type="Form" data-ui-id="filter"
-    action="/<%=: entity | plural %>" method="GET" novalidate="novalidate">
-    <div data-ui-type="Select" data-ui-id="status" data-ui-name="status"
-        data-ui-datasource="@statuses" data-ui-value="@status"
-        data-ui-extension-submit-type="AutoSubmit"></div>
+<!--target: deliveryListFilters(master = listFilter) -->
+<!-- content: filters -->
+    <!-- use:
+        listFilterSelect(
+            title = "状态：",
+            name = "status",
+            datasource = "statuses",
+            field = "status"
+        )
+    -->
     <!-- TODO: 如有其它筛选条件在此添加 -->
-    <!-- use: listSearchBox(placeholder = "请输入<%-: description %>名称") -->
-</form>
-
-<!-- target: <%-: templateName %>ExtraFilter -->
-<!-- TODO: 如果有复杂筛选条件在此处添加 -->
+<!-- /content -->
+<!-- content: filterResults -->
+    <!-- use:
+        filterResult(
+            title = "状态：", filter = ${filtersInfo.filters.status}
+        )
+    -->
+    <!-- TODO: 如有其它筛选条件在此添加 -->
+<!-- /content -->

@@ -21,7 +21,7 @@ define(
         /**
          * @override
          */
-        exports.entityDescription = '广告';
+        exports.entityDescription = '<%-: description %>';
 
 
         /**
