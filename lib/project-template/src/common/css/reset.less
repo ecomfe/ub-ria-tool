@@ -1,27 +1,20 @@
-/**
- * ${project.alias}
- * Copyright 2014 Baidu Inc. All rights reserved.
- *
- * @file 样式重置
- * @author ${developer.name}(${developer.email})
- */
+// RESET
 @import "./extern.less";
 
-// 引入EST重置
 .global-reset();
 .global-normalize();
 
 html, body {
     margin: 0;
     font-size: 12px;
-    // 最后一个是宋体，倒数2-3个为OSX用，宋体12px实在太丑了，至少放过OSX
+    // 最后一个是宋体，倒数2-3个为OSX用
     font-family: arial, verdana, "Hiragino Sans GB", Hiragino Sans GB, "\5B8B\4F53";
     -webkit-font-smoothing: antialiased;
 }
 
 a,
 .link-like {
-    color: #3167cc;
+    color: #12bfcd;
     text-decoration: none;
     cursor: pointer;
 
@@ -42,4 +35,12 @@ p {
     margin: 0;
     padding: 0;
     font-weight: normal;
+}
+
+header,
+section,
+\:section,
+footer,
+nav {
+    display: block;
 }

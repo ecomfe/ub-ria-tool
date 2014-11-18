@@ -1,15 +1,174 @@
 /**
- * ${project.alias}
+ * <%-: project.alias %>
  * Copyright 2014 Baidu Inc. All rights reserved.
  *
  * @file 多页面通用的class + 通用页（400、404等）的样式
- * @author ${developer.name}(${developer.email})
+ * @author <%-: developer.name %>(<%- developer.email %>)
  */
-// 表格状态列文字颜色
-.table-status-normal {
-    color: #30ab10;
+// 提示问号型的链接
+.tip-link {
+    .link-like();
+    .inline-block();
+    text-indent: -50000px;
+    .normal-icon(@tip-icon, @tip-icon-width, @tip-icon-height);
 }
 
-.table-status-removed {
-    color: #dc6768;
+.ui-draweractionpanel {
+    background: #fff;
+}
+
+.ui-dialog .ui-dialog-text {
+    max-height: 290px;
+    overflow-y: auto;
+}
+
+.table-drag-zone-disabled {
+    background: transparent url(../img/drag-disabled.png) no-repeat center center;
+}
+
+// 长条的提示信息
+.tip-bar {
+    padding: 5px;
+    color: #999;
+    font-size: 12px;
+    i {
+        width: 15px;
+        height: 15px;
+        border-radius: 15px;
+        color: #fff;
+        .inline-block();
+        text-align: center;
+        margin: 0 5px;
+        line-height: 15px;
+    }
+    .tip-alert {
+        background-color: #f9e08d;
+    }
+}
+
+// 404
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    #not-found {
+        section {
+            background-image: url(../img/404-2x.png);
+            background-size: 140px 140px;
+        }
+    }
+
+    #not-found {
+        section {
+            background-image: url(../img/400-2x.png);
+            background-size: 140px 140px;
+        }
+    }
+}
+
+.table-star,
+.table-unstar {
+    display: block;
+    width: 16px;
+    height: 16px;
+    margin: 0 auto;
+    .link-like();
+    .hide-text();
+}
+.table-star {
+    background: transparent url(../img/unstar.png) no-repeat;
+}
+.table-unstar {
+    background: transparent url(../img/star.png) no-repeat;
+}
+
+// 全局错误
+.global-error {
+    width: 660px;
+    margin: 0 auto;
+    padding-top: 80px;
+    font-size: 24px;
+
+    h2 {
+        font-size: 36px;
+    }
+
+    section {
+        background: transparent none no-repeat 0 0;;
+        padding-left: 180px;
+        margin-top: 2em;
+
+        p {
+            margin: 1em 0;
+        }
+
+        ul {
+            list-style-position: inside;
+        }
+    }
+
+    footer {
+        margin-top: 2em;
+        text-align: right;
+    }
+}
+
+#not-found {
+    section {
+        background-image: url(../img/404.png);
+    }
+}
+
+#generic-error {
+    section {
+        background-image: url(../img/400.png);
+    }
+}
+
+.sub-text {
+    display: block;
+    color: #9a9a9a;
+}
+
+.notice {
+    clear: both;
+    padding-left: 16px;
+    background: transparent url(../img/bulb.png) no-repeat;
+    line-height: 16px;
+}
+
+.warning {
+    background: #FFF3D9 url(../img/warning16.png) no-repeat 8px center;
+    line-height: 28px;
+    padding-left: 30px;
+    clear: both;
+    height: 28px;
+    width: 100%;
+    margin-top: 10px;
+    display: block;
+}
+
+.item-status-paused {
+    color: @status-paused;
+}
+
+.item-status-waiting {
+    color: @status-waiting;
+}
+
+.item-status-delivering {
+    color: @status-delivering;
+}
+
+.item-status-completed {
+    color: @status-completed;
+}
+
+.item-status-stopped {
+    color: @status-stopped;
+}
+
+.item-status-pending {
+    color: @status-pending;
+}
+
+.ui-label {
+    display: inline;
 }

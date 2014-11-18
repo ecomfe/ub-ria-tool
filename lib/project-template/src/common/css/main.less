@@ -1,21 +1,28 @@
 /**
- * ${project.alias}
+ * SSP for BAIDU
  * Copyright 2014 Baidu Inc. All rights reserved.
  *
  * @file less入口，用于导入所有less文件
- * @author ${developer.name}(${developer.email})
+ * @author otakustay(otakustay@gmail.com)
  */
 // 外部资源
 @import "./extern.less";
 
+// mixin
+@import "./mixin.less";
+
 // 通用
 @import "./reset.less";
+@import "./variable.less";
 @import "./layout.less";
 @import "./common.less";
-@import "./navigator.less";
+@import "./form.less";
+@import "./list.less";
+@import "./read.less";
+@import "./detail.less";
 
 // 控件
 @import "./../../ui/css/ui.less";
 
-// 各业务模块
-// TODO: 引入所有业务模块的less
+// 模块
+// TODO: 业务模块的less引用在此处添加

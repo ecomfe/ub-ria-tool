@@ -44,20 +44,18 @@
         require.config({
             'baseUrl': 'src'
         });
-
-        (function () {
-            function startSystem() {
-                require(
-                    ['common/main', 'common/gray'],
-                    function (main) {
-                        main.start();
-                    }
-                );
+    </script>
+    <script src="src/startup/echarts.js"></script>
+    <script src="src/startup/ui.js"></script>
+    <script src="src/startup/ria.js"></script>
+    <script src="src/startup/biz.js"></script>
+    <script>
+        require(
+            ['common/main', 'common/gray'],
+            function (main) {
+                main.start();
             }
-
-            var STARTUP_MODULES = ['startup/biz', 'startup/echarts', 'startup/ria', 'startup/ui'];
-            require(STARTUP_MODULES, startSystem);
-        }());
+        );
     </script>
 </body>
 </html>
