@@ -3,20 +3,22 @@
  * Copyright 2014 Baidu Inc. All rights reserved.
  *
  * @file <%-: description %>列表
- * @class <%-: actionType %>
  * @extends common.ListAction
  * @author <%-: developer.name %>(<%- developer.email %>)
  */
 define(
     function (require) {
-        var u = require('common/util');
-
+        /**
+         * @class <%-: entity %>.<%-: actionType %>
+         * @extends common.ListAction
+         */
         var exports = {};
 
         /**
          * @override
          */
-        exports.group = 'order';
+         // TODO: 必须根据系统的导航条信息来设置Action的分组名
+        exports.group = 'unknown';
 
         /**
          * @override
@@ -25,17 +27,15 @@ define(
 
 
         /**
-        * 初始化交互行为
-        *
-        * @override
-        */
+         * @override
+         */
         exports.initBehavior = function () {
             this.$super(arguments);
-
             //TODO: Action 初始化交互行为在这里添加，否则删除该接口
         };
 
-        var <%-: actionType %> = require('eoo').create(require('common/ListAction'), exports);
+        var ListAction = require('common/ListAction');
+        var <%-: actionType %> = require('eoo').create(ListAction, exports);
         return <%-: actionType %>;
     }
 );

@@ -3,17 +3,19 @@
  * Copyright 2014 Baidu Inc. All rights reserved.
  *
  * @file <%-: description %>列表视图类
- * @class <%-: viewType %>
  * @extends common.ListView
  * @author <%-: developer.name %>(<%- developer.email %>)
  */
 define(
     function (require) {
-        require('tpl!./tpl/list.tpl.html');
+        require('tpl!./tpl/<%-: templateFile %>.tpl.html');
 
-        var u = require('common/util');
         var Status = require('./enum').Status;
 
+        /**
+         * @class <%-: entity %>.<%-: viewType %>
+         * @extends common.ListView
+         */
         var exports = {};
 
         /**
@@ -64,110 +66,29 @@ define(
         exports.constructor = function () {
             this.$super(arguments);
 
-            // 批量设置控件事件
-            this.addUIEvents({
-                // TODO: 添加控件事件，如果有的话，否则删除该接口
-            });
+            // TODO: 批量设置控件事件，否则删除该部分
+            var uiEvents = {
+                // 示例 '{控件ID}:{事件ID}': handleFunctionName
+                // 'control-id:eventid': handleFunctionName
+                // 具体方法见[https://github.com/ecomfe/ub-ria/wiki/编码实践视图控件事件绑定]
+            };
+            this.addUIEvents(uiEvents);
+
+            // TODO: 批量设置控件属性，否则删除该部分
+            var uiProperties = {
+                // TODO: 控件属性在此处添加，示例如下：
+                // control-id: {
+                //     property1: xxx
+                // }
+                // 具体方法见[https://github.com/ecomfe/ub-ria/wiki/编码实践视图控件属性设置]
+            };
+            this.addUIProperties(uiProperties);
         };
 
-        var <%-: viewType %> = require('eoo').create(require('common/ListView'), exports);
+        // TODO: 其它接口和处理逻辑在此处添加，否则删除该注释
 
-        return <%-: viewType %>;
-
-
-
-
-
-
-
-
-
-        var util = require('er/util');
-        var ListView = require('ub-ria/mvc/ListView');
-
-        require('tpl!./tpl/<%-: templateFile %>.tpl.html');
-
-        /**
-         * <%-: description %>列表视图类
-         *
-         * @extends ub-ria.mvc.ListView
-         * @constructor
-         */
-        function <%-: viewType %>() {
-            ListView.apply(this, arguments);
-        }
-
-        util.inherits(<%-: viewType %>, ListView);
-
-        /**
-         * 使用的模板名称
-         *
-         * @type {string}
-         * @override
-         */
-        <%-: viewType %>.prototype.template = '<%- templateName %>';
-
-        var Status = require('./enum').Status;
-
-        var tableFields = [
-            // TODO: 表格列配置，添加列表相关列
-            {
-                title: '状态',
-                field: 'status',
-                sortable: false,
-                resizable: false,
-                width: 100,
-                stable: true,
-                content: function (item) {
-                    var statusItem = Status.fromValue(item.status);
-                    var status = {
-                        type: statusItem.alias.toLowerCase().replace(/_/g, '-'),
-                        text: statusItem.text
-                    };
-                    var Table = require('esui/Table');
-                    return Table.status(status);
-                }
-            },
-            {
-                title: '操作',
-                field: 'operation',
-                sortable: false,
-                resizable: false,
-                width: 80,
-                stable: true,
-                content: function (item) {
-                    var config = [
-                        {
-                            text: '修改',
-                            type: 'modify',
-                            auth: item.canModify,
-                            url: '#/<%-: entity %>/update~id=' + item.id
-                        },
-                        {
-                            text: '查看',
-                            type: 'read',
-                            auth: !item.canModify,
-                            url: '#/<%-: entity %>/view~id=' + item.id
-                        }
-                    ];
-
-                    var Table = require('esui/Table');
-                    return Table.operations(config);
-                }
-            }
-        ];
-
-        /**
-         * 控件额外属性
-         *
-         * @type {Object}
-         */
-        <%-: viewType %>.prototype.uiProperties = {
-            table: {
-                fields: tableFields
-            }
-        };
-
+        var ListView = require('common/ListView');
+        var <%-: viewType %> = require('eoo').create(ListView, exports);
         return <%-: viewType %>;
     }
 );
