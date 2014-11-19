@@ -2,69 +2,76 @@
  * <%-: project.alias %>
  * Copyright 2014 Baidu Inc. All rights reserved.
  *
- * @ignore
- * @file <%-: description %>表单视图
+ * @file <%-: description %>表单视图类
+ * @exports <%-: entity %>.<%-: viewType %>
  * @author <%-: developer.name %>(<%- developer.email %>)
  */
 define(
     function (require) {
-        var util = require('er/util');
-        var FormView = require('ub-ria/mvc/FormView');
-
         require('tpl!./tpl/<%-: templateFile %>.tpl.html');
 
         /**
-         * <%-: description %>表单视图类
-         *
-         * @extends ub-ria.mvc.FormView
-         * @constructor
+         * @class <%-: entity %>.<%-: viewType %>
+         * @extends common.FormView
          */
-        function <%-: viewType %>() {
-            FormView.apply(this, arguments);
-        }
-
-        util.inherits(<%-: viewType %>, FormView);
-
-        /** 
-         * 使用的模板名称
-         *
-         * @type {string}
-         * @override
-         */
-        <%-: viewType %>.prototype.template = '<%- templateName %>';
+        var exports = {};
 
         /**
-         * 从表单中获取实体数据
-         *
-         * @return {Object}
+         * @override
          */
-        <%-: viewType %>.prototype.getEntity = function () {
-            var entity = FormView.prototype.getEntity.apply(this, arguments);
-            // TODO: 如果实体有在表单中未包含的额外属性，在此处添加，没有则删除该方法
+        exports.template = '<%- templateName %>';
+
+        exports.constructor = function () {
+            this.$super(arguments);
+
+            // TODO: 批量设置控件事件，否则删除该部分
+            var uiEvents = {
+                // 示例 '{控件ID}:{事件ID}': handleFunctionName
+                // 'control-id:eventid': handleFunctionName
+                // 具体方法见[https://github.com/ecomfe/ub-ria/wiki/编码实践视图控件事件绑定]
+            };
+            this.addUIEvents(uiEvents);
+
+            // TODO: 批量设置控件属性，否则删除该部分
+            var uiProperties = {
+                // TODO: 控件属性在此处添加，示例如下：
+                // control-id: {
+                //     property1: xxx
+                // }
+                // 具体方法见[https://github.com/ecomfe/ub-ria/wiki/编码实践视图控件属性设置]
+            };
+            this.addUIProperties(uiProperties);
+        };
+
+        // TODO: 事件句柄函数在此处添加，否则删除该注释
+
+        /**
+         * @override
+         */
+        exports.enterDocument = function () {
+            this.$super(arguments);
+
+            // TODO: 容器渲染后处理过程在此处添加，如控制元素可见性等操作，否则删除该接口
+        };
+
+        // TODO: 渲染后处理函数在此处添加，否则删除该注释
+
+        /**
+         * @override
+         */
+        exports.getEntity = function () {
+            var entity = this.$super(arguments);
+
+            // TODO: 从表单中获取实体数据并做相应处理，否则删除该接口
 
             return entity;
         };
 
-        /**
-         * 控件额外属性配置
-         *
-         * @type {Object}
-         * @override
-         */
-        <%-: viewType %>.prototype.uiProperties = {
-            // TODO: 添加控件的额外属性配置，如没有则删除该属性
-        };
+        // TODO: 表单数据获取函数在此处添加，否则删除该注释
 
-        /**
-         * 控件事件配置
-         *
-         * @type {Object}
-         * @override
-         */
-        <%-: viewType %>.prototype.uiEvents = {
-            // TODO: 添加控件的事件配置，如没有则删除该属性
-        };
-        
+        var FormView = require('common/FormView');
+        var <%-: viewType %> = require('eoo').create(FormView, exports);
+
         return <%-: viewType %>;
     }
 );

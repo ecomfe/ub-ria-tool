@@ -2,61 +2,39 @@
  * <%-: project.alias %>
  * Copyright 2014 Baidu Inc. All rights reserved.
  *
- * @ignore
  * @file <%-: description %>表单
+ * @exports <%-: entity %>.<%-: actionType %>
  * @author <%-: developer.name %>(<%- developer.email %>)
  */
 define(
     function (require) {
-        var FormAction = require('ub-ria/mvc/FormAction');
-        var util = require('er/util');
-        var config = require('./config');
-
         /**
-         * <%-: description %>表单
-         *
-         * @extends ub-ria.mvc.FormAction
-         * @constructor
+         * @class <%-: entity %>.<%-: actionType %>
+         * @extends common.FormAction
          */
-        function <%-: actionType %>() {
-            FormAction.apply(this, arguments);
-        }
-
-        util.inherits(<%-: actionType %>, FormAction);
+        var exports = {};
 
         /**
-         * 当前Action的分组名称
-         *
-         * @type {string}
          * @override
          */
-        // TODO: 必须设置这个值，根据系统的导航条进行设置
-        <%-: actionType %>.prototype.group = 'unknown';
+        // TODO: 必须根据系统的导航条信息来设置Action的分组名
+        exports.group = 'unknown';
 
         /**
-         * 当前Action负责的实体的描述名称
-         *
-         * @type {string}
          * @override
          */
-        <%-: actionType %>.prototype.entityDescription = config.description;
+        exports.entityDescription = <%-: description %>;
 
         /**
-         * 数据模型类型
-         *
-         * @type {function}
          * @override
          */
-        <%-: actionType %>.prototype.modelType = require('./<%- modelModule %>');
+        exports.initBehavior = function () {
+            this.$super(arguments);
+            //TODO: Action 初始化交互行为在这里添加，否则删除该接口
+        };
 
-        /**
-         * 视图类型
-         *
-         * @type {Function}
-         * @override
-         */
-        <%-: actionType %>.prototype.viewType = require('./<%- viewModule %>');
-
+        var FormAction = require('common/FormAction');
+        var <%-: actionType %> = require('eoo').create(FormAction, exports);
         return <%-: actionType %>;
     }
 );
