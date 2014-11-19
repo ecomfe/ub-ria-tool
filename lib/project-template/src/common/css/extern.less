@@ -1,27 +1,24 @@
 /**
- * <%-: project.alias %>
+ * ${project.alias}
  * Copyright 2014 Baidu Inc. All rights reserved.
  *
  * @file 引用外部less文件
- * @author <%-: developer.name %>(<%- developer.email %>)
+ * @author ${developer.name}(${developer.email})
  */
 // esui
-@import "./../../../dep/esui/3.1.0-beta.3/src/css/variable.less";
-@import "./../../../dep/esui/3.1.0-beta.3/src/css/mixin.less";
+@import "./../../../dep/esui/${esuiVersion}/src/css/variable.less";
+@import "./../../../dep/esui/${esuiVersion}/src/css/mixin.less";
 
 // est
-@import "./../../../dep/est/1.2.2/src/all.less";
+@import "./../../../dep/est/${estVersion}/src/all.less";
 @support-old-ie: false;
 
-
 // esui-flat-theme
-@import "./../../../dep/esui-flat-theme/1.0.0-alpha.3/src/main.less";
+@import "./../../../dep/esui-flat-theme/${flatThemeVersion}/src/main.less";
 
 // ub-ria
-@import "./../../../dep/ub-ria/1.0.0-alpha.6/src/ui/css/main.less";
-@import "./../../../dep/ub-ria/1.0.0-alpha.6/src/common/css/common.less";
-@import "./../../../dep/ub-ria/1.0.0-alpha.6/src/common/css/layout.less";
-@import "./../../../dep/ub-ria/1.0.0-alpha.6/src/common/css/form.less";
-@import "./../../../dep/ub-ria/1.0.0-alpha.6/src/common/css/list.less";
-
-@import "./../../../dep/ub-ria-sidebar/0.0.3/src/css/main.less";
+@import "./../../../dep/ub-ria/${riaVersion}/src/ui/css/main.less";
+@import "./../../../dep/ub-ria/${riaVersion}/src/common/css/common.less";
+@import "./../../../dep/ub-ria/${riaVersion}/src/common/css/layout.less";
+@import "./../../../dep/ub-ria/${riaVersion}/src/common/css/form.less";
+@import "./../../../dep/ub-ria/${riaVersion}/src/common/css/list.less";

@@ -1,9 +1,9 @@
 /**
- * <%-: project.alias %>
+ * ${project.alias}
  * Copyright 2014 Baidu Inc. All rights reserved.
  *
  * @file 表单通用样式
- * @author <%-: developer.name %>(<%- developer.email %>)
+ * @author ${developer.name}(${developer.email})
  */
 // 描述节点样式
 .form-field-description,
@@ -94,42 +94,6 @@
             visibility: hidden;
         }
         background-color: transparent;
-    }
-}
-
-
-// 抽屉里的样式
-.ui-draweractionpanel {
-    // 这里给form添加一个背景图，用来弥补没有纵向滚动条时，空白的那块区域
-    .form-page {
-        background: url(../img/submit-bg.png) repeat-x scroll 0 bottom #fff;
-        min-height: 100%;
-
-        &.state-warned {
-            background: url(../img/submit-bg-warn.png) repeat-x scroll 0 bottom #fff;
-        }
-    }
-    // 表单主体
-    .content-main {
-        // 让出按钮
-        padding-bottom: 100px;
-        // 使用背景图方式目前有一个缺陷，当表单内容填满外容器的时候，背景就被挡住了
-        // 所以把背景置为空，就不会遮挡了
-        background: none;
-    }
-    // 按钮层
-    .form-submit-section {
-        position: fixed;
-        bottom: 0;
-        // 让出滚动条
-        right: 20px;
-        left: @draweractionpanel-offset;
-        width: auto;
-    }
-
-    // 隐藏状态的drawPanel里的按钮层要恢复原态
-    &.ui-draweractionpanel-hidden .form-submit-section {
-        position: static;
     }
 }
 
