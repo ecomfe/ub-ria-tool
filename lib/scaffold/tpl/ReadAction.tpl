@@ -2,61 +2,31 @@
  * <%-: project.alias %>
  * Copyright 2014 Baidu Inc. All rights reserved.
  *
- * @ignore
  * @file <%-: description %>只读页
+ * @exports <%-: entity %>.<%-: actionType %>
  * @author <%-: developer.name %>(<%- developer.email %>)
  */
 define(
     function (require) {
-        var util = require('er/util');
-        var config = require('./config');
-        var ReadAction = require('ub-ria/mvc/ReadAction');
-
         /**
-         * <%-: description %>表单
-         *
-         * @extends ub-ria.mvc.ReadAction
-         * @constructor
+         * @class <%-: entity %>.<%-: actionType %>
+         * @extends common.ReadAction
          */
-        function <%-: actionType %>() {
-            ReadAction.apply(this, arguments);
-        }
-
-        util.inherits(<%-: actionType %>, ReadAction);
+        var exports = {};
 
         /**
-         * 当前Action的分组名称
-         *
-         * @type {string}
          * @override
          */
-        // TODO: 必须设置这个值，根据系统的导航条进行设置
-        <%-: actionType %>.prototype.group = 'unknown';
+        // TODO: 必须根据系统的导航条信息来设置Action的分组名
+        exports.group = 'unknown';
 
         /**
-         * 当前Action负责的实体的描述名称
-         *
-         * @type {string}
          * @override
          */
-        <%-: actionType %>.prototype.entityDescription = config.description;
+        exports.entityDescription = '<%-: description %>';
 
-        /**
-         * 视图类型
-         *
-         * @type {Function}
-         * @override
-         */
-        <%-: actionType %>.prototype.viewType = require('./<%- viewType %>');
-
-        /**
-         * 数据模型类型
-         *
-         * @type {Function}
-         * @override
-         */
-        <%-: actionType %>.prototype.modelType = require('./<%- modelType %>');
-
+        var ReadAction = require('common/ReadAction');
+        var <%-: actionType %> = require('eoo').create(ReadAction, exports);
         return <%-: actionType %>;
     }
 );

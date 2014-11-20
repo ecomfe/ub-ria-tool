@@ -2,37 +2,38 @@
  * <%-: project.alias %>
  * Copyright 2014 Baidu Inc. All rights reserved.
  *
- * @ignore
  * @file <%-: description %>只读页视图类
+ * @exports <%-: entity %>.<%-: viewType %>
  * @author <%-: developer.name %>(<%- developer.email %>)
  */
 define(
     function (require) {
-        var util = require('er/util');
-        var ReadView = require('ub-ria/mvc/ReadView');
-        
         require('tpl!./tpl/<%-: templateFile %>.tpl.html');
 
         /**
-         * <%-: description %>只读页视图类
-         *
-         * @extends ub-ria.mvc.ReadView
-         * @constructor
+         * @class <%-: entity %>.<%-: viewType %>
+         * @extends common.ReadView
          */
-        function <%-: viewType %>() {
-            ReadView.apply(this, arguments);
-        }
+        var exports = {};
 
-        util.inherits(<%-: viewType %>, ReadView);
-
-        /** 
-         * 使用的模板名称
-         *
-         * @type {string}
+        /**
          * @override
          */
-        <%-: viewType %>.prototype.template = '<%- templateName %>';
-        
+        exports.template = '<%- templateName %>';
+
+        /**
+         * @override
+         */
+        exports.enterDocument = function () {
+            this.$super(arguments);
+
+            // TODO: 容器渲染后处理过程在此处添加，如控制元素可见性等操作，否则删除该接口
+        };
+
+        // TODO: 渲染后处理函数在此处添加，否则删除该注释
+
+        var ReadView = require('common/ReadView');
+        var <%-: viewType %> = require('eoo').create(ReadView, exports);
         return <%-: viewType %>;
     }
 );

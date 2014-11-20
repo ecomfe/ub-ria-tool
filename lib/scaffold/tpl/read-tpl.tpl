@@ -1,20 +1,22 @@
-<!-- target: <%-: templateName %> -->
-<div class="read fullsize-page">
-    <!-- import: formCrumb -->
+<!-- target: <%-: templateName %>(master = formPage) -->
+<!-- content: crumb -->
+    <!-- import: <%-: templateName %>Crumb -->
+<!-- /content -->
+<!-- content: formMain -->
     <!-- import: <%-: templateName %>Main -->
-</div>
+<!-- /content -->
 
-<!-- target: <%-: templateName %>Main -->
-<div class="read-content">
-    <!-- import: <%-: templateName %>CommonSection -->
-</div>
+<!-- target: <%-: templateName %>Crumb(master = crumb) -->
+<!-- content: path -->
+    <!-- use: formCrumb(title = '<%-: description %>') -->
+<!-- /content -->
 
-<!-- target: <%-: templateName %>CommonSection -->
-<section class="read-section">
-    <h3 class="read-section-title">基本信息</h3>
-    <div class="read-field">
-        <span class="read-field-name">名称：</span>
-        <span class="read-field-value">${name}</span>
-    </div>
-    <!-- TODO: 添加其它字段 -->
-</section>
+<!-- target: <%-: templateName %>Main(master = readView) -->
+<!-- content: sections -->
+    <section class="form-section">
+        <!-- use: labelReadField(label = '名称', value = ${name}) -->
+        <!-- use: labelReadField(label = '显示顺序', value = ${displayOrder}) -->
+        <!-- use: labelReadField(label = '说明', value = ${description}) -->
+        <!-- TODO: 添加其它字段 -->
+    </section>
+<!-- /content -->
