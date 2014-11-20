@@ -8,13 +8,7 @@
 
 <!-- target: <%-: templateName %>Crumb(master = crumb) -->
 <!-- content: path -->
-    <!-- if: ${formType} === 'create' -->
-    <span><%-: description %>频道</span>
-    <!-- elif: ${formType} === 'update' -->
-    <span><%-: description %>频道</span>
-    <!-- else -->
-    <span><%-: description %>频道</span>
-    <!-- /if -->
+    <!-- use: formCrumb(title = '<%-: description %>') -->
 <!-- /content -->
 
 <!-- target: <%-: templateName %>Main(master = formView) -->
@@ -38,6 +32,6 @@
                 description = '(选填)'
             )
         -->
-        // TODO: 各类型字段在此添加，相关模板请参考common/tpl/form.tpl.html中各常用模板函数
+        <!-- TODO: 各类型字段在此添加，相关模板请参考common/tpl/form.tpl.html中各常用模板函数 -->
     </section>
 <!-- /content -->
