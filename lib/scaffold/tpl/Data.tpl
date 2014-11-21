@@ -3,33 +3,34 @@
  * Copyright 2014 Baidu Inc. All rights reserved.
  *
  * @file <%-: description %>数据类
- *
- * @class <%-: entity %>.<%-: entity | pascal %>Data
- * @extends common.BaseData
- *
+ * @exports <%-: entity %>.Data
  * @author <%-: developer.name %>(<%- developer.email %>)
  */
 define(
     function (require) {
+        /**
+         * @class <%-: entity %>.Data
+         * @extends common.BaseData
+         */
         var exports = {};
 
-        // TODO: 其它非标准请求接口在此添加
+        // TODO: 其它非标准请求接口在此添加，示例如下
         /**
          * 获取物料尺寸列表
          *
-         * @method getXXX#.size
+         * @method <%-: entity %>.Data.getSample
          * @return {er.meta.FakeXHR}
          */
-        exports.getSample = function () {
-            return this.request(
-                '$entity/sample',
-                {},
-                {
-                    url: '/$entity/sample',
-                    method: 'GET'
-                }
-            );
-        }
+        // exports.getSample = function () {
+        //     return this.request(
+        //         '<%-: entity %>/sample',
+        //         {},
+        //         {
+        //             url: '/<%-: entity %>/sample',
+        //             method: 'GET'
+        //         }
+        //     );
+        // }
 
         var requests = {
             search: {
@@ -75,7 +76,7 @@ define(
             // TODO: 有其它请求在此配置
         };
 
-        var <%-: entity | pascal %>Data = require('eoo').create(require('common/BaseData'), exports);
+        var Data = require('eoo').create(require('common/BaseData'), exports);
 
         var RequestManager = require('ub-ria/mvc/RequestManager');
         require('common/util').each(
@@ -85,6 +86,6 @@ define(
             }
         );
 
-        return <%-: entity | pascal %>Data;
+        return Data;
     }
 );

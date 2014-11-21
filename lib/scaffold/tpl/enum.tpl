@@ -3,12 +3,16 @@
  * Copyright 2014 Baidu Inc. All rights reserved.
  *
  * @file <%-: description %>模块枚举
+ * @namespace <%-: entity %>.enum
  * @author {<%-: developer.name %>(<%- developer.email %>)}
  */
 define(
     function (require) {
         var Enum = require('er/Enum');
 
+        /**
+         * @namespace <%-: entity %>.enum
+         */
         var exports = {};
 
         /**
