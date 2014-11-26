@@ -1,6 +1,6 @@
 /**
  * <%-: project.alias %>
- * Copyright 2014 Baidu Inc. All rights reserved
+ *
  *
  * @file <%-: description %>实体描述
  * @author {<%-: developer.name %>(<%- developer.email %>)}

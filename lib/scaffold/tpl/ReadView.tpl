@@ -1,6 +1,6 @@
 /**
  * <%-: project.alias %>
- * Copyright 2014 Baidu Inc. All rights reserved.
+ *
  *
  * @file <%-: description %>只读页视图类
  * @exports <%-: entity %>.<%-: viewType %>

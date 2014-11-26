@@ -1,6 +1,6 @@
 /**
  * <%-: project.alias %>
- * Copyright 2014 Baidu Inc. All rights reserved.
+ *
  *
  * @file <%-: description %>模块枚举
  * @namespace <%-: entity %>.enum
