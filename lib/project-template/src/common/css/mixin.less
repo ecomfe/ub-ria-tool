@@ -1,0 +1,32 @@
+/**
+ * ${project.alias}
+ *
+ *
+ * @file mixin函数
+ * @author ${developer.name}(${developer.email})
+ */
+
+.transform(@v) {
+    -webkit-transform: @v;
+    -moz-transform: @v;
+    -ms-transform: @v;
+    -o-transform: @v;
+    transform: @v;
+}
+
+.translate(@x, @y, @z) {
+    .transform(translate(@x, @y));
+    .transform(translate(@x, @y, @z));
+}
+
+.transition(@v) {
+    -webkit-transition: @v;
+    -moz-transition: @v;
+    -o-transition: @v;
+    transition: @v;
+}
+
+.middle-text(@height) {
+    height: @height;
+    line-height: @height;
+}

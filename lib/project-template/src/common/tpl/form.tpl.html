@@ -1,10 +1,243 @@
-<!-- target: formSubmitField -->
-<div class="form-field form-submit-field">
-    <button type="submit" data-ui-type="Button"
-        data-ui-skin="spring" data-ui-id="submit" data-ui-group="submit">保存</button>
-    <div data-ui-type="Button" data-ui-id="cancel" data-ui-group="submit"
-        data-ui-skin="link">取消</div>
+<!-- target: formSubmitSection -->
+<esui-panel class="form-submit-section" data-ui-id="submit-section">
+    <button type="submit" data-ui-type="Button" data-ui-id="submit" data-ui-group="submit" class="submit-button"><!-- if: ${formType} === 'update' -->完成<!-- else -->新建<!-- /if --></button>
+    <div data-ui-type="Button" data-ui-id="cancel" data-ui-group="submit" data-ui-skin="link">取消</div>
+</esui-panel>
+
+<!-- 由label + value + tip组成的表单field模板，content可以是任意内容 -->
+<!-- master: formLabelValueField -->
+<!-- var: label = ${label} || ${title} -->
+<!-- var: id = ${id} || ${name} || ${field} -->
+<!-- var: commonFieldClass = ${required} ? 'form-field-required' : 'form-field' -->
+<!-- if: ${fieldClasses} -->
+<div class="${commonFieldClass} ${fieldClasses}">
+<!-- else -->
+<div class="${commonFieldClass}">
+<!-- /if -->
+    <esui-label class="form-field-label" data-ui-for-target="${id | dasherize}">${label}：</esui-label>
+    <div class="form-field-value">
+        <!-- if: ${required} -->
+        <span class="form-field-value-required-star">*</span>
+        <!-- /if -->
+        <!-- contentplaceholder: value --><!-- /contentplaceholder-->
+        <!-- if: ${tipTitle} && ${tip} -->
+        <esui-tip class="form-field-tip" title="${tipTitle}">${tip}</esui-tip>
+        <!-- /if -->
+    </div>
 </div>
 
+<!-- 由label + boxgroup + tip组成的表单field模板，content可以是任意内容 -->
+<!-- master: formLabelBoxGroupField -->
+<!-- var: id = ${id} || ${name} -->
+<!-- if: ${fieldClasses} -->
+<div class="form-field ${fieldClasses}">
+<!-- else -->
+<div class="form-field">
+<!-- /if -->
+    <esui-label class="form-field-label" data-ui-for-target="${id | dasherize}">${title}：</esui-label>
+    <div class="form-field-value">
+        <esui-box-group data-ui-id="${id | dasherize}" data-ui-skin="flat"
+        data-ui-box-type="radio" data-ui-name="${name}" data-ui-value="${value}">
+            <!-- contentplaceholder: radioGroup --><!-- /contentplaceholder-->
+        </esui-box-group>
+        <!-- if: ${tipTitle} && ${tip} -->
+        <esui-tip class="form-field-tip" title="${tipTitle}">${tip}</esui-tip>
+        <!-- /if -->
+        <!-- contentplaceholder: content --><!-- /contentplaceholder-->
+        </esui-panel>
+    </div>
+</div>
+
+<!-- master: formPage -->
+<esui-panel data-ui-id="form-page" class="form-page">
+    <div class="page-crumb">
+        <!-- contentplaceholder: crumb --><!-- /contentplaceholder -->
+        <!-- contentplaceholder: tip --><!-- /contentplaceholder -->
+    </div>
+    <!-- contentplaceholder: formMain --><!-- /contentplaceholder-->
+</esui-panel>
+
+<!-- master: formView -->
+<div class="form-view">
+    <form data-ui-type="Form" data-ui-id="form" novalidate="novalidate">
+        <esui-panel class="content-main" data-ui-id="form-content-main"
+            data-ui-extension-command-type="Command" data-command="form-content-click">
+            <!-- contentplaceholder: sections --><!-- /contentplaceholder -->
+        </esui-panel>
+        <!-- import: formSubmitSection -->
+    </form>
+</div>
+
+<!-- master: formViewWithOwnActionArea -->
+<div class="form-view">
+    <form data-ui-type="Form" data-ui-id="form" novalidate="novalidate">
+        <esui-panel class="content-main" data-ui-id="form-content-main"
+            data-ui-extension-command-type="Command" data-command="form-content-click"
+        >
+            <!-- contentplaceholder: sections --><!-- /contentplaceholder -->
+        </esui-panel>
+            <!-- contentplaceholder: formSubmitSection --><!-- /contentplaceholder -->
+    </form>
+</div>
+
+<!-- target: formToggleSectionHead -->
+<esui-toggle-panel
+    class="form-section form-toggle-section" data-ui-id="${id}"
+    <!-- if: ${expanded} -->data-ui-expanded="true"<!-- /if --> >
+    <h3>
+        ${title}
+        <!-- if: ${hint} -->
+        <em class="form-section-title-hint">${hint}</em>
+        <!-- /if -->
+    </h3>
+    <section class="form-section">
+
+<!-- target: formToggleSectionTail -->
+    </section>
+</esui-toggle-panel>
+
+<!-- target: textbox -->
+<!-- var: name = ${name} || ${field} -->
+<!-- var: id = ${id} || ${name} -->
+<!-- var: width = ${width} || 230 -->
+<!-- var: length = ${length} || 100 -->
+<!-- var: trim = !${notTrim} -->
+<esui-text-box data-ui-id="${id | dasherize}" data-ui-value="@${field}"
+    name="${name}" title="${title}" data-ui-max-length="-1"
+    data-ui-validity-label="${id | dasherize}-validity-label"
+    <!-- if: ${mode} -->data-ui-mode="${mode}"<!-- /if -->
+    <!-- if: ${required} -->data-ui-required="required"<!-- /if -->
+    <!-- if: ${width} -->data-ui-width="${width}"<!-- /if -->
+    <!-- if: ${length} -->data-ui-length="${length}"<!-- /if -->
+    <!-- if: ${minLength} --> data-ui-min-length="${minLength}"<!-- /if -->
+    <!-- if: ${min} || ${min} === 0 -->data-ui-min="${min}"<!-- /if -->
+    <!-- if: ${minErrorMessage} -->data-ui-min-error-message="${minErrorMessage}"<!-- /if -->
+    <!-- if: ${max} || ${max} === 0 -->data-ui-max="${max}"<!-- /if -->
+    <!-- if: ${maxErrorMessage} -->data-ui-max-error-message="${maxErrorMessage}"<!-- /if -->
+    <!-- if: ${pattern} -->data-ui-pattern="${pattern}"<!-- /if -->
+    <!-- if: ${patternErrorMessage} -->data-ui-pattern-error-message="${patternErrorMessage}"<!-- /if -->
+    <!-- if: ${countWord} -->data-ui-extension-count-type="WordCount"<!-- /if -->
+    <!-- if: ${prefixHint} -->data-ui-hint="${prefixHint}" data-ui-hint-type="prefix" <!-- /if -->
+    <!-- if: ${group} -->data-ui-group="${group}"<!-- /if -->
+    <!-- if: ${compare} -->data-ui-compare="${compare}"<!-- /if -->
+    <!-- if: ${placeholder} -->data-ui-placeholder="${placeholder}"<!-- /if -->
+    <!-- if: ${disabled} -->data-ui-disabled="true"<!-- /if --> >
+</esui-text-box>
+<!-- if: ${suffixHint} -->
+<esui-label class="suffix-hint" data-ui-id="${id | dasherize}-suffix-hint">${suffixHint}</esui-label>
+<label data-ui-type="Validity" data-ui-id="${id | dasherize}-validity-label"></label>
+<!-- /if -->
+<!-- if: ${description} -->
+<div class="form-field-description">${description}</div>
+<!-- /if -->
+
+<!-- target: textarea -->
+<!-- var: name = ${name} || ${field} -->
+<!-- var: id = ${id} || ${name} -->
+<!-- var: width = ${width} || 360 -->
+<!-- var: height = ${height} || 130 -->
+<!-- var: trim = !${notTrim} -->
+<div class="form-field-frame">
+    <div data-ui-type="Validity" data-ui-id="${id | dasherize}-validity-label"></div>
+    <div class="form-field-description-block">${description}</div>
+    <esui-text-box name="${name}" title="${title}"
+        data-ui-id="${id | dasherize}" data-ui-value="@${field}" data-ui-mode="textarea"
+        data-ui-validity-label="${id | dasherize}-validity-label"
+        <!-- if: ${required} -->data-ui-required="required"<!-- /if -->
+        <!-- if: ${width} -->data-ui-width="${width}"<!-- /if -->
+        <!-- if: ${height} -->data-ui-height="${height}"<!-- /if -->
+        <!-- if: ${length} -->data-ui-length="${length}"<!-- /if -->
+        <!-- if: ${countWord} -->data-ui-extension-count-type="WordCount"<!-- /if -->
+        <!-- if: ${group} -->data-ui-group="${group}"<!-- /if --> >
+    </esui-text-box>
+</div>
+
+<!-- target: checkbox -->
+<!-- var: name = ${name} || ${field} -->
+<!-- var: id = ${id} || ${name} -->
+<esui-check-box type="checkbox" name="${name}" title="${text}"
+    data-ui-id="${id | dasherize}" data-ui-value="@${field}" >
+</esui-check-box>
+
+<!-- target: calendar -->
+<!-- var: name = ${name} || ${field} -->
+<!-- var: id = ${id} || ${name} -->
+<esui-calendar data-ui-id="${id | dasherize}" data-ui-name="${name}"
+    data-ui-value="@${field}" data-ui-auto-hide-layer="true"
+    <!-- if: ${range} -->data-ui-range="${range}"<!-- /if -->
+    <!-- if: ${validityLabel} -->data-ui-validity-label="${validityLabel}"<!-- /if --> >
+</esui-calendar>
+
+<!-- target: moneyTextboxField(master = formLabelValueField) -->
+<!-- content: value -->
+    <!-- var: prefixHint = ${prefixHint} || '¥' -->
+    <!-- var: pattern = '@rule.money.pattern' -->
+    <!-- import: textbox -->
+<!-- /content -->
+
+<!-- target: urlTextboxField(master = formLabelValueField) -->
+<!-- content: value -->
+    <!-- var: prefixHint = ${prefixHint} || 'http://' -->
+    <!-- var: hintType = ${textboxHintType} || 'prefix' -->
+    <!-- import: textbox -->
+<!-- /content -->
+
+<!-- target: sizeTextboxField(master = formLabelValueField) -->
+<!-- content: value -->
+    <!-- var: suffixHint = ${suffixHint} || 'px' -->
+    <!-- import: textbox -->
+<!-- /content -->
+
+<!-- target: frequencyTextboxField(master = formLabelValueField) -->
+<!-- content: value -->
+    <!-- var: suffixHint = ${suffixHint} || '次' -->
+    <!-- var: pattern = '@rule.positiveInteger.pattern' -->
+    <!-- import: textbox -->
+<!-- /content -->
+
+<!-- target: secondTextboxField(master = formLabelValueField) -->
+<!-- content: value -->
+    <!-- var: suffixHint = ${suffixHint} || '秒' -->
+    <!-- var: pattern = '@rule.positiveInteger.pattern' -->
+    <!-- import: textbox -->
+<!-- /content -->
+
+<!-- target: percentTextboxField(master = formLabelValueField) -->
+<!-- content: value -->
+    <!-- var: suffixHint = ${suffixHint} || ' %' -->
+    <!-- var: pattern = '@rule.money.pattern' -->
+    <!-- import: textbox -->
+<!-- /content -->
+
+<!-- target: textboxField(master = formLabelValueField) -->
+<!-- content: value -->
+    <!-- import: textbox -->
+<!-- /content -->
+
+
+<!-- target: textareaField(master = formLabelValueField) -->
+<!-- content: value -->
+    <!-- import: textarea -->
+<!-- /content -->
+
+<!-- target: checkboxField(master = formLabelValueField) -->
+<!-- content: value -->
+    <!-- var: title = '@dictionary.percent.hint' || ' %' -->
+    <!-- var: hintType =  '@dictionary.percent.hintType' || 'suffix' -->
+    <!-- var: pattern = '@rule.money.pattern' -->
+    <!-- import: checkbox -->
+<!-- /content -->
+
+<!-- target: calendarField(master = formLabelValueField) -->
+<!-- content: value -->
+    <!-- import: calendar -->
+<!-- /content -->
+
 <!-- target: formCrumb -->
-<nav data-ui-type="Crumb" data-ui-id="crumb" data-ui-path="@crumbPath" id="crumb"></nav>
+<!-- if: ${formType} === 'create' -->
+<span>新建${title}</span>
+<!-- elif: ${formType} === 'update' -->
+<span>修改${title}</span>
+<!-- else -->
+<span>查看${title}</span>
+<!-- /if -->

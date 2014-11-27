@@ -9,9 +9,9 @@
     <link rel="icon" href="http://www.baidu.com/favicon.ico" />
     <script src="src/external/esl.js"></script>
     <script>
-        // TODO: 不需要配置跨域的请删除
+        // TODO: 请自行补全跨域配置信息，不需要配置跨域的请删除
         try {
-            document.domain = 'baidu.com';
+            document.domain = '';
         }
         catch (domainSecurityError) {
         }
@@ -27,13 +27,19 @@
         document.createElement('article');
         document.createElement('figure');
         document.createElement('figcaption');
-        document.createElement('time');
     </script>
     <header id="header">
         <h1 id="logo"><a href="#">${project.name | html}</a></h1>
         <nav id="nav"></nav>
     </header>
-    <div id="main"></div>
+    <div id="page-container" class="page-container">
+        <div id="main" class="page-content"></div>
+    </div>
+    <div id="global-indicator">
+        <div class="loading-bounce-point loading-bounce-one"></div>
+        <div class="loading-bounce-point loading-bounce-two"></div>
+        <div class="loading-bounce-point loading-bounce-three"></div>
+    </div>
     <footer id="foot"></footer>
     <script>
         window.DEBUG = true;
@@ -44,20 +50,18 @@
         require.config({
             'baseUrl': 'src'
         });
-
-        (function () {
-            function startSystem() {
-                require(
-                    ['common/main', 'common/gray'],
-                    function (main) {
-                        main.start();
-                    }
-                );
+    </script>
+    <script src="src/startup/echarts.js"></script>
+    <script src="src/startup/ui.js"></script>
+    <script src="src/startup/ria.js"></script>
+    <script src="src/startup/biz.js"></script>
+    <script>
+        require(
+            ['common/main', 'common/gray'],
+            function (main) {
+                main.start();
             }
-
-            var STARTUP_MODULES = ['startup/biz', 'startup/echarts', 'startup/ria', 'startup/ui'];
-            require(STARTUP_MODULES, startSystem);
-        }());
+        );
     </script>
 </body>
 </html>

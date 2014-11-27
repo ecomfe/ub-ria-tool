@@ -1,24 +1,37 @@
-<!-- target: <%-: templateName %> -->
-<div class="form fullsize-page">
-    <!-- import: formCrumb -->
+<!-- target: <%-: templateName %>(master = formPage) -->
+<!-- content: crumb -->
+    <!-- import: <%-: templateName %>Crumb -->
+<!-- /content -->
+<!-- content: formMain -->
     <!-- import: <%-: templateName %>Main -->
-</div>
+<!-- /content -->
 
-<!-- target: <%-: templateName %>Main -->
-<form class="form-content" data-ui-type="Form" data-ui-id="form"
-    action="/<%-: entity | plural %>" method="POST" novalidate="novalidate">
-    <!-- import: <%-: templateName %>CommonSection -->
-</form>
+<!-- target: <%-: templateName %>Crumb(master = crumb) -->
+<!-- content: path -->
+    <!-- use: formCrumb(title = '<%-: description %>') -->
+<!-- /content -->
 
-<!-- target: <%-: templateName %>CommonSection -->
-<section class="form-section">
-    <div class="form-field">
-        <label for="<%-: entity %>-form-name" class="form-field-name">名称：</label>
-        <input data-ui-type="TextBox" data-ui-id="name"
-            data-ui-required="required" data-ui-length="@rule.maxLength"
-            data-value="@name" id="<%-: entity %>-form-name" name="name" title="<%- description %>名称"
-            data-ui-extension-count-type="WordCount" />
-    </div>
-    <!-- import: formSubmitField -->
-<!-- TODO: 增加其它字段 -->
-</section>
+<!-- target: <%-: templateName %>Main(master = formView) -->
+<!-- content: sections -->
+    <section class="form-section">
+        <!-- use:
+            textboxField(
+                title = '名称', field = 'name', required = true, countWord = true
+            )
+        -->
+        <!-- use:
+            textboxField(
+                title = '显示顺序', field = 'displayOrder', required = true, min = 1, max = 10000, patern = 'rule.positiveInteger.pattern', tipTitle = '什么是显示顺序？', tip = '显示顺序用于排序，按从小到大升序排列。'
+            )
+        -->
+        <!-- use:
+            textareaField(
+                title = '说明',
+                field = 'description',
+                length = 400,
+                description = '(选填)'
+            )
+        -->
+        <!-- TODO: 各类型字段在此添加，相关模板请参考common/tpl/form.tpl.html中各常用模板函数 -->
+    </section>
+<!-- /content -->

@@ -1,6 +1,6 @@
 /**
  * ${project.alias}
- * Copyright 2014 Baidu Inc. All rights reserved.
+ *
  *
  * @file 布局相关less
  * @author ${developer.name}(${developer.email})
@@ -8,4 +8,165 @@
 // 始终显示纵向滚动条，以免页面高度导致内容横移
 body {
     overflow-y: scroll;
+}
+
+// 加载动画
+#global-indicator {
+    position: fixed;
+    top: 60px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 120px;
+    height: 60px;
+    z-index: 9000;
+    text-align: center;
+
+    .loading-bounce-point {
+        background: #c0ede8;
+        border-radius: 100%;
+        display: inline-block;
+        height: 18px;
+        width: 18px;
+        -webkit-animation: bouncedelay 1.4s infinite ease-in-out;
+        animation: bouncedelay 1.4s infinite ease-in-out;
+        /* Prevent first frame from flickering when animation starts */
+        -webkit-animation-fill-mode: both;
+        animation-fill-mode: both;
+    }
+
+    .loading-bounce-one {
+        -webkit-animation-delay: -0.32s;
+        animation-delay: -0.32s;
+    }
+    .loading-bounce-two {
+        -webkit-animation-delay: -0.16s;
+        animation-delay: -0.16s;
+    }
+}
+
+// header区域在展开时是fixed的
+header {
+    z-index: 2;
+    position: fixed;
+    top: 0;
+}
+
+#logo {
+    float: left;
+}
+
+// 顶栏的图标menu
+.header-menu {
+    position: relative;
+    .interactive-cursor();
+    float: right;
+    height: @header-height;
+    line-height: @header-height;
+    margin: 0 15px;
+    &:hover {
+        background-color: @dropdownmenu-bg-hover;
+    }
+
+    ul {
+        display: none;
+        position: absolute;
+        z-index: 10;
+        right: 0;
+        top: @header-height;
+        width: 123px;
+
+        li {
+            .transition(background-color 0.5s);
+            display: block;
+            padding: 0 25px 0 42px;
+            background-color: @dropdownmenu-bg-hover;
+
+            &:hover {
+                background-color: @dropdownmenu-item-bg-hover;
+            }
+
+            a {
+                &:hover {
+                    text-decoration: none;
+                }
+            }
+        }
+    }
+
+    &.header-menu-expanded {
+        background-color: @dropdownmenu-bg-hover;
+        ul {
+            display: block;
+        }
+    }
+}
+
+// 带下拉展开样式的顶栏menu
+.header-drop-down-menu {
+    // 下拉的标题
+    .title {
+        width: 93px;
+        padding-right: 30px;
+        .ellipsis();
+        height: @header-height;
+        .pseudo-icon(url(../img/arrow-down.png), 9px, 5px, right, 16px);
+    }
+}
+
+
+.item-user-select {
+    .pseudo-icon(url(../img/user-select-icon.png), 16px, 12px, left, 10px);
+}
+
+.item-logout {
+    .pseudo-icon(url(../img/logout-icon.png), 14px, 14px, left, 10px);
+}
+
+.item-help {
+    .pseudo-icon(url(../img/help-icon.png), 15px, 15px, left, 10px);
+}
+
+.item-modify {
+    .pseudo-icon(url(../img/user-icon.png), 16px, 16px, left, 10px);
+}
+
+@-webkit-keyframes bouncedelay {
+    0%, 80%, 100% {
+        -webkit-transform: scale(0.0)
+    }
+
+    40% {
+        -webkit-transform: scale(1.0)
+    }
+}
+
+@keyframes bouncedelay {
+    0%, 80%, 100% {
+        transform: scale(0.0);
+        -webkit-transform: scale(0.0);
+    }
+
+    40% {
+        transform: scale(1.0);
+        -webkit-transform: scale(1.0);
+    }
+}
+
+// 面包屑外框样式
+.page-crumb {
+    position: relative;
+    background: #f7f7f7;
+    padding-left: 10px;
+    .clearfix();
+    .ui-crumb {
+        float: left;
+    }
+    .ui-tip,
+    .tip-link {
+        float: left;
+        margin-left: -10px;
+        margin-top: 22px;
+    }
 }

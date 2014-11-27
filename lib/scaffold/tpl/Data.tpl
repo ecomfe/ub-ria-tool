@@ -1,28 +1,36 @@
 /**
  * <%-: project.alias %>
- * Copyright 2014 Baidu Inc. All rights reserved.
  *
- * @ignore
+ *
  * @file <%-: description %>数据类
+ * @exports <%-: entity %>.Data
  * @author <%-: developer.name %>(<%- developer.email %>)
  */
 define(
     function (require) {
-        var u = require('underscore');
-        var util = require('er/util');
-        var BaseData = require('common/BaseData');
-
         /**
-         * <%-: description %>数据类
-         *
+         * @class <%-: entity %>.Data
          * @extends common.BaseData
-         * @constructor
          */
-        function <%-: entity | pascal %>Data() {
-            BaseData.call(this, '<%-: entity %>');
-        }
+        var exports = {};
 
-        util.inherits(<%-: entity | pascal %>Data, BaseData);
+        // TODO: 其它非标准请求接口在此添加，示例如下
+        /**
+         * 获取物料尺寸列表
+         *
+         * @method <%-: entity %>.Data.getSample
+         * @return {er.meta.FakeXHR}
+         */
+        // exports.getSample = function () {
+        //     return this.request(
+        //         '<%-: entity %>/sample',
+        //         {},
+        //         {
+        //             url: '/<%-: entity %>/sample',
+        //             method: 'GET'
+        //         }
+        //     );
+        // }
 
         var requests = {
             search: {
@@ -68,14 +76,16 @@ define(
             // TODO: 有其它请求在此配置
         };
 
+        var Data = require('eoo').create(require('common/BaseData'), exports);
+
         var RequestManager = require('ub-ria/mvc/RequestManager');
-        u.each(
+        require('common/util').each(
             requests,
             function (config) {
                 RequestManager.register(<%-: entity | pascal %>Data, config.name, config);
             }
         );
 
-        return <%-: entity | pascal %>Data;
+        return Data;
     }
 );

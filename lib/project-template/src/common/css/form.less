@@ -1,0 +1,144 @@
+/**
+ * ${project.alias}
+ *
+ *
+ * @file 表单通用样式
+ * @author ${developer.name}(${developer.email})
+ */
+// 描述节点样式
+.form-field-description,
+.form-field-description-block {
+    color: #999;
+    font-size: 12px;
+}
+
+// inline展示的
+.form-field-description {
+    padding-left: 5px;
+    .inline-block();
+}
+
+// select的样式比较复杂，使用float简化，inline-block不好控制
+.form-field-value {
+    >.ui-select {
+        float: left;
+    }
+
+    .ui-select + .form-field-description {
+        float: left;
+    }
+
+    // 通用错误提示样式
+    .ui-validity-invalid {
+        color: #f00;
+        font-size: 12px;
+    }
+
+
+    // 错误信息之后的描述节点隐藏
+    .ui-validity-invalid + .form-field-description,
+    .ui-validity-invalid + .form-field-description-block {
+        display: none;
+    }
+
+    // 还有一种验证信息样式跟description一样
+    .ui-validity-hint {
+        .form-field-description();
+    }
+
+    .suffix-hint {
+        margin-left: 5px;
+    }
+}
+
+// 非inline展示的description
+.form-field-description-block {
+    display: block;
+}
+
+// 独行提示信息，对应相邻上行的form-field
+.form-field-info-break,
+.form-field-info-break-required {
+    padding-left: @form-field-label-width;
+    // 除了有缩进占位label以外，都跟description一样
+    .form-field-description-block();
+}
+// 如果它对应的是一个reuqired field，那么还要再缩进一个*的位置
+.form-field-info-break-required {
+    padding-left: @form-field-label-width + @form-field-required-star-width;
+}
+
+
+
+// 重置提交区域样式
+.form-submit-section {
+    @form-submit-section-padding-top: 30px;
+    @form-submit-section-padding-bottom: 46px;
+    padding: @form-submit-section-padding-top 30px @form-submit-section-padding-bottom;
+    margin: 0;
+    background: #fff;
+    position: relative;
+    .opacity(90);
+
+    // warn的高度受提交区影响
+    .ui-warn {
+        height: @form-submit-section-padding-top + @form-submit-section-padding-bottom + 35px;
+    }
+}
+
+.form-page.state-warned {
+    // 提示层覆盖提交按钮
+    .form-submit-section {
+        .submit-button,
+        .cancel-button {
+            visibility: hidden;
+        }
+        background-color: transparent;
+    }
+}
+
+// 表单单元被套在一个灰色框内
+.form-field-frame {
+    background: @gray-bg-color;
+    padding: 10px 10px 16px;
+    .inline-block();
+
+    .ui-textbox-validity-label, .ui-textarea-validity-label {
+        display: block;
+    }
+}
+
+// 第三方联盟ID区域的表单样式
+.form-field-alliance-field {
+    .form-field-alliance-label {
+        width: 170px;
+    }
+
+    .form-field-sub-title {
+        line-height: 20px;
+        font-size: 12px;
+        color: #999;
+        margin-top: 8px;
+
+        a {
+            color: #12bdce;
+        }
+    }
+}
+
+#batch-uploader .form-field-value {
+    .ui-link {
+        margin-top: 10px;
+    }
+}
+
+.top-border-panel {
+    margin-top: 20px;
+    padding-bottom: 30px;
+    border-top: 3px solid #dfdfdf;
+    background-color: #f8f8f8;
+
+    .form-field, .form-field-required {
+        margin: 20px 20px 0;
+    }
+}

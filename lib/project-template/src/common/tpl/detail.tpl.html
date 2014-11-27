@@ -1,0 +1,26 @@
+<!-- master: detailPage -->
+<div class="detail-page">
+    <div class="page-crumb">
+        <!-- contentplaceholder: crumb --><!-- /contentplaceholder -->
+    </div>
+    <div class="detail-page-content">
+        <!-- contentplaceholder: main --><!-- /contentplaceholder -->
+    </div>
+</div>
+
+<!-- target: detailListActionPanel -->
+<div data-ui-type="ActionPanel" data-ui-id="detail-list" data-ui-url="@listActionURL">
+</div>
+
+<!-- target: detailSummaryItem -->
+<span class='detail-field'>
+    <!-- if: !${statusValue} -->
+    ${label}<span class="detail-value">${value}</span>
+    <!-- else -->
+    <span class="detail-status">${label}：<span class="item-status-${alias}">${count}</span>个</span>
+    <!-- /if -->
+
+    <!-- if: ${url} -->
+    <a data-ui-type="Link" class="action-link detail-action-link" data-ui-id="${id}" data-ui-href="${url}">${content}</a>
+    <!-- /if -->
+</span>

@@ -1,4 +1,39 @@
-<!-- target: readReturnField -->
-<div class="read-field read-return-field">
-    <span data-ui-type="Button" data-ui-id="return" data-ui-skin="link">返回</span>
+<!-- target: labelReadField -->
+<div class="form-field">
+    <div class="form-field-label">${label}：</div>
+    <div class="form-field-value">${value}</div>
 </div>
+
+<!-- target: ellipsisLabelReadField -->
+<!-- var: id = ${id} || ${values} -->
+<!-- var: tail = ${tail} || ${label} -->
+<!-- var: maxLength = ${maxLength} || '2' -->
+<div class="form-field">
+    <div class="form-field-label">${label}：</div>
+    <div class="form-field-value">
+        ${values}
+    </div>
+</div>
+
+<!-- master: readView -->
+<div class="form-view">
+    <esui-panel class="content-main" data-ui-id="form-content-main"
+        data-ui-extension-command-type="Command" data-command="form-content-click">
+        <!-- contentplaceholder: sections --><!-- /contentplaceholder -->
+    </esui-panel>
+    <!-- import: readReturnSection -->
+</div>
+
+<!-- master: readViewWithOwnActionArea -->
+<div class="form-view">
+    <esui-panel class="content-main" data-ui-id="form-content-main"
+        data-ui-extension-command-type="Command" data-command="form-content-click">
+        <!-- contentplaceholder: sections --><!-- /contentplaceholder -->
+    </esui-panel>
+    <!-- contentplaceholder: readCommandSection --><!-- /contentplaceholder -->
+</div>
+
+<!-- target: readReturnSection -->
+<esui-panel class="form-submit-section" data-ui-id="submit-section">
+    <span data-ui-type="Button" data-ui-id="return" data-ui-skin="link">返回</span>
+</esui-panel>
