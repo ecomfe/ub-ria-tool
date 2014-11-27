@@ -57,9 +57,14 @@
     <script src="src/startup/biz.js"></script>
     <script>
         require(
-            ['common/main', 'common/gray'],
-            function (main) {
-                main.start();
+            ['common/ioc'],
+            function (ioc) {
+                ioc.getComponent(
+                    ['main', 'gray'],
+                    function (main, gray) {
+                        main.start();
+                    }
+                )
             }
         );
     </script>
